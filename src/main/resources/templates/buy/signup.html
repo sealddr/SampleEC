@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+    <!-- CSS読込-->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/buy/signup.css}">
+
+    <!-- JS読込-->
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/buy/signup.js}" defer></script>
+
+    <title>アカウント新規作成</title>
+    </head>
+    <body class="bg-light">
+        <form id="signup-form" method="post" action="/buy/signup" class="form-signup" th:object="${buySignupForm}">
+            <h1 class="h2 text-center">アカウント新規作成</h1>
+
+            <!-- ユーザーID(メールアドレス) -->
+            <div class="mb-2">
+                <label for="userId" class="form-label" th:text="#{signup.userId}"></label>
+                <input type="text" class="form-control" th:field="*{userId}" th:errorclass="is-invalid" />
+                <div class="invalid-feedback" th:errors="*{userId}"></div>            
+            </div>
+
+            <!-- パスワード -->
+            <div class="mb-2">
+                <label for="password" class="form-label" th:text="#{signup.password}"></label>
+                <input type="password" class="form-control" th:field="*{password}" th:errorclass="is-invalid" />
+                <div class="invalid-feedback" th:errors="*{password}"></div>            
+            </div>
+
+            <!-- お名前 -->
+            <div class="mb-2">
+                <label for="userName" class="form-label" th:text="#{signup.userName}"></label>
+                <input type="text" class="form-control" th:field="*{userName}" th:errorclass="is-invalid" />
+                <div class="invalid-feedback" th:errors="*{userName}"></div>            
+            </div>
+
+            <!-- フリガナ -->
+            <div class="mb-2">
+                <label for="furigana" class="form-label" th:text="#{signup.furigana}"></label>
+                <input type="text" class="form-control" th:field="*{furigana}" th:errorclass="is-invalid" />
+                <div class="invalid-feedback" th:errors="*{furigana}"></div>            
+            </div>
+
+            <!-- 電話番号 -->
+            <div class="mb-2">
+                <label for="phoneNumber" class="form-label" th:text="#{signup.phoneNumber}"></label>
+                <input type="text" class="form-control" th:field="*{phoneNumber}" th:errorclass="is-invalid" />
+                <div class="invalid-feedback" th:errors="*{phoneNumber}"></div>            
+            </div>
+
+            <!-- 生年月日 -->
+            <div class="mb-2">
+                <label for="birthday" class="form-label" th:text="#{signup.birthday}"></label>
+                <input type="text" class="form-control" th:field="*{birthday}" th:errorclass="is-invalid" />
+                <div class="invalid-feedback" th:errors="*{birthday}"></div>            
+            </div>
+
+            <!-- ご職業 -->
+            <div class="mb-2">
+                <label for="occupation" class="form-label" th:text="#{signup.occupation}"></label><br>
+                <div th:each="occupation:${occupationList}" class="form-check-inline">
+                    <input type="radio" class="form-check-input" th:value="${occupation.occupationId}" th:field="*{occupationId}" th:errorclass="is-invalid" />
+                    <label class="form-check-label" th:text="${occupation.occupationName}"></label>
+                </div>
+                <div class="text-danger" th:if="${#fields.hasErrors('occupationId')}" th:errors="*{occupationId}"></div>
+            </div>
+
+            <!-- 登録ボタン -->
+            <input type="submit" th:value="#{buy.signup.btn}" class="btn btn-primary w-100 mt-3">
+
+            <!-- <button id="btn-signup" type="button" class="btn btn-primary w-100 mt-3">
+                ユーザー登録
+            </button> -->
+        </form>
+    </body>
+</html>

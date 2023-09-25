@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+    <head>
+        <title>セッション学習ページ</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="container">
+                <form method="post" action="/study/session" th:object="${studySessionForm}">
+                    <div class="row">
+                        <div class="col-auto">
+                            <input class="form-control" th:field="*{textField}">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-outline-primary" type="submit">セッションテスト</button>
+                        </div>
+                    </div>
+                </form>
+                <p th:text="${studySessionText}"></p>
+            </div>            
+        </div>
+    </body>
+</html>

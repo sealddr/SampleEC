@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+    <head>
+        <title>ボタン学習ページ</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="container">                
+                <form id="button-form" method="post" action="/study/button" th:object="${studyButtonForm}">
+                    <button type="submit" value="ボタンに設定された値です" name="buttonValue" class="btn btn-primary">ボタンに設定された値を表示</button>
+                    <input type="hidden" th:value="*{buttonValueOutput}" name="buttonValueOutput">
+                    <p th:text="*{buttonValueOutput}"></p>
+
+                    <input type="hidden" value="hidden項目に設定された値です" name="hiddenValue">
+                    <button type="submit" class="btn btn-primary" name="showHiddenValue">hidden項目に設定された値を表示</button>
+                    <input type="hidden" th:value="*{hiddenValueOutput}" name="hiddenValueOutput">
+                    <p th:text="*{hiddenValueOutput}"></p>
+                </form>
+            </div>            
+        </div>
+    </body>
+</html>

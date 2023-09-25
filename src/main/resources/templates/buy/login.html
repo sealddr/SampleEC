@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+    <head>
+        <!-- CSS読込-->
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/css/buy/login.css}">
+
+        <!-- JS読込-->
+        <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+
+        <title>ログイン</title>
+    </head>
+    <body class="bg-light">
+        <div class="text-center">
+            <form method="post" th:action="@{/buy/login}" class="form-login">
+                <h2>ログイン</h2>
+                <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+                   th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+                   class="text-danger">
+                    ログインエラーメッセージ
+                </p>
+                <div class="mb-3">
+                    <label for="userId" class="form-label visually-hidden">userId</label>
+                    <input type="text" class="form-control" placeholder="ユーザーID" name="userId" />
+                </div>
+    
+                <div class="mb-3">
+                    <label for="password" class="form-label visually-hidden">password</label>
+                    <input type="text" class="form-control" placeholder="パスワード" name="password" />
+                </div>
+                <input type="submit" value="ログイン" class="btn btn-primary" />
+            </form>
+            <a th:href="@{/buy/signup}">新規登録はこちら</a>
+        </div>
+    </body>
+    </html>
