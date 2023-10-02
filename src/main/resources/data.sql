@@ -1,3 +1,4 @@
+-- 商品カテゴリの初期データ
 INSERT INTO m_goods_category (
     goods_category_id,
     goods_category_name
@@ -19,6 +20,7 @@ INSERT INTO m_goods_category (
     '趣味娯楽'
 );
 
+-- 商品の初期データ
 INSERT INTO m_goods (
     goods_id,
     goods_name,
@@ -55,6 +57,7 @@ INSERT INTO m_goods (
     800
 );
 
+-- 職業の初期データ
 INSERT INTO m_occupation (
     occupation_id,
     occupation_name
@@ -75,6 +78,7 @@ INSERT INTO m_occupation (
     'その他'
 );
 
+-- ユーザーの初期データ
 INSERT INTO m_user (
     user_id,
     password,
@@ -103,4 +107,33 @@ INSERT INTO m_user (
     '2000-01-01',
     4,
     'ROLE_ADMIN'
+);
+
+-- 支払方法の初期データ
+INSERT INTO m_payment_method (
+    payment_method_id,
+    payment_method_name
+) VALUES (
+    0,
+    'デモ用決済'
+),
+(
+    1,
+    'クレジットカード決済'
+),
+(
+    2,
+    'キャリア決済'
+),
+(
+    3,
+    '後払い'
+),
+(
+    4,
+    'コンビニ決済(web)'
+),
+(
+    5,
+    'ID決済'
 );
