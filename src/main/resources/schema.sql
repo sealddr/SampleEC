@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS m_occupation (
 -- 支払方法マスタ
 CREATE TABLE IF NOT EXISTS m_payment_method (
     payment_method_id INT PRIMARY KEY,
-    payment_method_name VARCHAR(50)
+    payment_method_name VARCHAR(50),
+    destination_page VARCHAR(50)
 );
 
 ALTER TABLE m_goods ADD FOREIGN KEY (goods_category_id) REFERENCES m_goods_category(goods_category_id);

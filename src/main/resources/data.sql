@@ -112,28 +112,35 @@ INSERT INTO m_user (
 -- 支払方法の初期データ
 INSERT INTO m_payment_method (
     payment_method_id,
-    payment_method_name
+    payment_method_name,
+    destination_page
 ) VALUES (
     0,
-    'デモ用決済'
+    'デモ用決済',
+    'demoPay'
 ),
 (
     1,
-    'クレジットカード決済'
+    'クレジットカード決済',
+    NULL
 ),
 (
     2,
-    'キャリア決済'
+    'キャリア決済',
+    NULL
 ),
 (
     3,
-    '後払い'
+    '後払い',
+    NULL
 ),
 (
     4,
-    'コンビニ決済(web)'
+    'コンビニ決済(web)',
+    NULL
 ),
 (
     5,
-    'ID決済'
+    'ID決済',
+    NULL
 );
