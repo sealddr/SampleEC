@@ -8,15 +8,35 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 	
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	public MvcRequestMatcher.Builder mvc(HandlerMappingIntrospector introspector) {
+		return new MvcRequestMatcher.Builder(introspector);
+	}
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
 		
-		http.formLogin(login -> login
+		http.authorizeHttpRequests(authz -> authz
+				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+				.requestMatchers(PathRequest.toH2Console()).permitAll()
+				.requestMatchers(mvc.pattern("/")).permitAll()
+				.requestMatchers(mvc.pattern("/cart/add-to-cart")).permitAll()
+				.requestMatchers(mvc.pattern("/cart/remove-from-cart")).permitAll()
+				.requestMatchers(mvc.pattern("/login")).permitAll()
+				.requestMatchers(mvc.pattern("/cart/view")).permitAll()
+				.requestMatchers(mvc.pattern("/user/signup")).permitAll()
+				.requestMatchers(mvc.pattern("/admin")).hasRole("ADMIN")
+				.requestMatchers(mvc.pattern("/webjars/**")).permitAll()
+				.requestMatchers(mvc.pattern("/error")).permitAll()
+				.anyRequest().authenticated()
+		).formLogin(login -> login
 				.loginProcessingUrl("/login")
 				.loginPage("/login")
 				.failureUrl("/login?error")
@@ -25,20 +45,7 @@ public class SecurityConfig {
 				.defaultSuccessUrl("/cart/view", true)
 		).logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
-        ).authorizeHttpRequests(authz -> authz
-				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-				.requestMatchers("/").permitAll()
-				.requestMatchers("/cart/add-to-cart").permitAll()
-				.requestMatchers("/cart/remove-from-cart").permitAll()
-				.requestMatchers("/login").permitAll()
-				.requestMatchers("/cart/view").permitAll()
-				.requestMatchers("/user/signup").permitAll()
-				.requestMatchers("/admin").hasRole("ADMIN")
-				.requestMatchers("/webjars/**").permitAll()
-				.requestMatchers("/h2-console/**").permitAll()
-				.requestMatchers("/error").permitAll()
-				.anyRequest().authenticated()
-		);	
+        );	
 				
 		http.csrf().disable();
 		http.headers().frameOptions().disable(); 
