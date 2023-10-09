@@ -11,6 +11,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
+import jakarta.validation.Path;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -45,10 +47,10 @@ public class SecurityConfig {
 				.defaultSuccessUrl("/cart/view", true)
 		).logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
-        );	
-				
-		http.csrf().disable();
-		http.headers().frameOptions().disable(); 
+        );
+
+        http.csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()));
+//		http.headers().frameOptions().disable(); 
 		
 		return http.build();
 		
