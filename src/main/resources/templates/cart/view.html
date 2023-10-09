@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
     layout:decorate="~{layout/layout}">
 
     <head>
@@ -11,8 +12,12 @@
         <div layout:fragment="content">
             <div class="container">
                 <nav class="my-2">
-                    <a th:href="@{/}" class="btn btn-outline-primary" type="button">教材検索に戻る</a>
-                    <a th:href="@{/buy/login}" class="btn btn-outline-primary" type="button">ログインして買い物を続ける</a>
+                    <div>
+                        <a th:href="@{/}" class="btn btn-outline-primary" type="button">教材検索に戻る</a>
+                    </div>
+                    <div sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/buy/login}" class="btn btn-outline-primary" type="button">ログインして買い物を続ける</a>
+                    </div>
                 </nav>
                 <h2>ショッピングカート内の商品一覧</h2>
                 <table class="table table-striped table-hover table-bordered">
