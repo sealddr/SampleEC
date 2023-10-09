@@ -14,7 +14,7 @@
     </head>
     <body class="bg-light">
         <div class="text-center">
-            <form method="post" th:action="@{/buy/login}" class="form-login">
+            <form method="post" th:action="@{/login}" class="form-login">
                 <h2>ログイン</h2>
                 <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
                    th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
@@ -32,7 +32,7 @@
                 </div>
                 <input type="submit" value="ログイン" class="btn btn-primary" />
             </form>
-            <a th:href="@{/buy/signup}">新規登録はこちら</a>
+            <a th:href="@{/signup}">新規登録はこちら</a>
         </div>
     </body>
     </html>
