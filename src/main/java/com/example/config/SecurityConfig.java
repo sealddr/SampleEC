@@ -5,13 +5,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
-
-import jakarta.validation.Path;
 
 @Configuration
 @EnableWebSecurity
@@ -29,10 +30,10 @@ public class SecurityConfig {
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				.requestMatchers(PathRequest.toH2Console()).permitAll()
 				.requestMatchers(mvc.pattern("/")).permitAll()
-				.requestMatchers(mvc.pattern("/cart/add-to-cart")).permitAll()
-				.requestMatchers(mvc.pattern("/cart/remove-from-cart")).permitAll()
-				.requestMatchers(mvc.pattern("/login")).permitAll()
+				.requestMatchers(mvc.pattern("/cart/add")).permitAll()
+				.requestMatchers(mvc.pattern("/cart/remove")).permitAll()
 				.requestMatchers(mvc.pattern("/cart/view")).permitAll()
+				.requestMatchers(mvc.pattern("/login")).permitAll()
 				.requestMatchers(mvc.pattern("/user/signup")).permitAll()
 				.requestMatchers(mvc.pattern("/admin")).hasRole("ADMIN")
 				.requestMatchers(mvc.pattern("/webjars/**")).permitAll()
@@ -48,14 +49,27 @@ public class SecurityConfig {
 		).logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
         );
-
-        http.csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()));
-//		http.headers().frameOptions().disable(); 
-		
+		http.csrf().disable();
+//        http.csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()));
+		//		http.headers().frameOptions().disable(); 		
 		return http.build();
 		
 	}
 	
+	@Bean
+	public InMemoryUserDetailsManager userDetailsService() {
+		UserDetails user = User.withUsername("user")
+							.password("user")
+							.roles("USER")
+							.build();
+		UserDetails admin = User.withUsername("admin")
+							.password("admin")
+							.roles("USER", "ADMIN")
+							.build();
+		return new InMemoryUserDetailsManager(user, admin);	
+	}
+
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
