@@ -30,7 +30,7 @@ public class RestCartOperationController {
 	@Autowired 
 	GoodsService goodsService;
 	
-	@PostMapping("/add-to-cart")
+	@PostMapping("/add")
 	public int postAddToCart(AddToCartForm form) {
 		log.debug(form.toString());
 		MCart cart = (MCart) session.getAttribute("cart");
@@ -42,7 +42,7 @@ public class RestCartOperationController {
 		return 0;
 	}
 	
-	@DeleteMapping("/remove-from-cart")
+	@DeleteMapping("/remove")
 	public int postRemoveFromCart(RemoveFromCartForm form) {
 		MCart cart = (MCart) session.getAttribute("cart");
 		String goodsId = form.getGoodsId();
