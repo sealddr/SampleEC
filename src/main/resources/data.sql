@@ -90,7 +90,7 @@ INSERT INTO m_user (
     role
 ) VALUES (
     'user@co.jp',
-    'password',
+    '$2a$10$KWNeC5deiOeM4GZ2nxQzeekyFqeGz/hmQ1lk3WDq.793taFtcdzXq',
     '教材太郎',
     'キョウザイタロウ',
     '0123456789',
@@ -100,7 +100,7 @@ INSERT INTO m_user (
 ),
 (
     'system@co.jp',
-    'password',
+    '$2a$10$KWNeC5deiOeM4GZ2nxQzeekyFqeGz/hmQ1lk3WDq.793taFtcdzXq',
     'システム管理者',
     'キョウザイカンリシャ',
     '0123456789',
