@@ -13,4 +13,6 @@ public interface UserMapper {
 	public List<Occupation> findAllOccupations();
 	
 	public int insertOne(MUser user);
+
+	public MUser findLoginUser(String userId);
 }

@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.domain.cart.model.MCart;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -19,9 +21,11 @@ public class LoginController {
 		return "login";
 	}
 	
-	@PostMapping("/login")
+	@GetMapping("/aiueo")
 	public String postLogin(Model model) {
-		model.addAttribute("cart", session.getAttribute("cart"));
+		MCart cart = (MCart) session.getAttribute("cart");
+		if(null == cart) cart = new MCart();
+		model.addAttribute("cart", cart);
 		return "redirect:/cart/view";
 	}
 }

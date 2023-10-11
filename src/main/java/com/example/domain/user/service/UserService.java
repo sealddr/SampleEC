@@ -9,5 +9,7 @@ public interface UserService {
 	
 	public List<Occupation> getOccupations();
 
-	public void buySignUp(MUser user);
+	public void signUp(MUser user);
+
+	public MUser getLoginUser(String userId);
 }

@@ -1,15 +1,17 @@
 package com.example.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+//import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
@@ -17,7 +19,7 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
+
 	@Bean
 	public MvcRequestMatcher.Builder mvc(HandlerMappingIntrospector introspector) {
 		return new MvcRequestMatcher.Builder(introspector);
@@ -34,7 +36,7 @@ public class SecurityConfig {
 				.requestMatchers(mvc.pattern("/cart/remove")).permitAll()
 				.requestMatchers(mvc.pattern("/cart/view")).permitAll()
 				.requestMatchers(mvc.pattern("/login")).permitAll()
-				.requestMatchers(mvc.pattern("/user/signup")).permitAll()
+				.requestMatchers(mvc.pattern("/signup")).permitAll()
 				.requestMatchers(mvc.pattern("/admin")).hasRole("ADMIN")
 				.requestMatchers(mvc.pattern("/webjars/**")).permitAll()
 				.requestMatchers(mvc.pattern("/error")).permitAll()
@@ -45,17 +47,18 @@ public class SecurityConfig {
 				.failureUrl("/login?error")
 				.usernameParameter("userId")
 				.passwordParameter("password")
-				.defaultSuccessUrl("/cart/view", true)
+				.defaultSuccessUrl("/aiueo", true)
 		).logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
         );
-		http.csrf().disable();
+        http.csrf(csrf -> csrf.disable());
 //        http.csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()));
-		//		http.headers().frameOptions().disable(); 		
+        http.headers(headers -> headers.frameOptions().disable()); 		
 		return http.build();
 		
 	}
 	
+	/*
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
 		PasswordEncoder encoder = passwordEncoder();
@@ -69,7 +72,8 @@ public class SecurityConfig {
 							.build();
 		return new InMemoryUserDetailsManager(user, admin);	
 	}
-   
+    */
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

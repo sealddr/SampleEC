@@ -11,7 +11,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.user.model.MUser;
 import com.example.domain.user.model.Occupation;
@@ -19,9 +18,10 @@ import com.example.domain.user.service.UserService;
 import com.example.form.BuySignupForm;
 import com.example.form.GroupOrder;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
-@RequestMapping("/buy")
-public class BuySignupController {
+public class SignupController {
 	
 	@Autowired
 	private UserService userService;
@@ -29,25 +29,30 @@ public class BuySignupController {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	@Autowired
+	private HttpSession session;
+
 	@GetMapping("/signup")
-	public String getBuySignup(Model model, @ModelAttribute BuySignupForm form) {
+	public String getSignup(Model model, @ModelAttribute BuySignupForm form) {
 		
 		List<Occupation> occupationList = userService.getOccupations();
 		model.addAttribute("occupationList", occupationList);
-		return "buy/signup";
+		return "signup";
 	}
 	
 	@PostMapping("/signup")
-	public String postBuySignup(Model model,
+	public String postSignup(Model model,
 			@ModelAttribute @Validated(GroupOrder.class) BuySignupForm form, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
-			return getBuySignup(model, form);
+			return getSignup(model, form);
 		}
 		
 		MUser user = modelMapper.map(form, MUser.class);		
-		userService.buySignUp(user);
+		userService.signUp(user);
 		
-		return "buy/payselect";
+		model.addAttribute("cart", session.getAttribute("cart"));		
+
+		return "cart/view";
 	}
 }
