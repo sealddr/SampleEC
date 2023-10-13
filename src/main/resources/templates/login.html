@@ -9,13 +9,14 @@
         <!-- JS読込-->
         <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+        <script th:src="@{/js/login/logout.js}" defer></script>
 
-        <title>ログイン</title>
+        <title th:text="#{login.title}"></title>
     </head>
     <body class="bg-light">
         <div class="text-center">
             <form method="post" th:action="@{/login}" class="form-login">
-                <h2>ログイン</h2>
+                <h2 id="login-title" th:text="#{login.title}"></h2>
                 <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
                    th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
                    class="text-danger">
@@ -23,17 +24,16 @@
                 </p>
                 <div class="mb-3">
                     <label for="userId" class="form-label visually-hidden">ユーザーID</label>
-                    <input type="text" class="form-control" placeholder="ユーザーID" name="userId" />
+                    <input type="text" class="form-control" th:placeholder="#{login.userId}" name="userId" />
                 </div>
-    
                 <div class="mb-3">
                     <label for="password" class="form-label visually-hidden">パスワード</label>
-                    <input type="text" class="form-control" placeholder="パスワード" name="password" />
+                    <input type="text" class="form-control" th:placeholder="#{login.password}" name="password" />
                 </div>
-                <input type="submit" value="ログイン" class="btn btn-primary" />
+                <input type="submit" th:value="#{login.btn}" class="btn btn-primary" />
             </form>
-            <a th:href="@{/signup}">新規登録はこちら</a>
-            <a th:href="@{/}">ホーム</a>
+            <a th:href="@{/signup}" th:text="#{login.signup}"></a>
+            <a th:href="@{/}" th:text="#{login.home}"></a>
         </div>
     </body>
     </html>
