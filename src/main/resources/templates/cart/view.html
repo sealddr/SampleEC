@@ -18,6 +18,9 @@
                     <div sec:authorize="!isAuthenticated()">
                         <a th:href="@{/login}" class="btn btn-outline-primary" type="button">ログインして買い物を続ける</a>
                     </div>
+                    <div sec:authorize="isAuthenticated()" th:if="!${#lists.isEmpty(cart.cartItems)}">
+                        <a th:href="@{/buy/payselect}" class="btn btn-outline-primary" type="button">ご購入手続きへ</a>
+                    </div>
                 </nav>
                 <h2>ショッピングカート内の商品一覧</h2>
                 <table class="table table-striped table-hover table-bordered">
