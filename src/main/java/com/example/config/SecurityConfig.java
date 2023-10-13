@@ -42,7 +42,7 @@ public class SecurityConfig {
 				.failureUrl("/login?error")
 				.usernameParameter("userId")
 				.passwordParameter("password")
-				.defaultSuccessUrl("/aiueo", true)
+				.defaultSuccessUrl("/login/success", true)
 		).logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
         );
