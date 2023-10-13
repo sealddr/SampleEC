@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
@@ -22,7 +23,7 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
-		
+		CookieClearingLogoutHandler cookies = new CookieClearingLogoutHandler("our-custom-cookie");
 		http.authorizeHttpRequests(authz -> authz
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				.requestMatchers(PathRequest.toH2Console()).permitAll()
@@ -45,6 +46,7 @@ public class SecurityConfig {
 				.defaultSuccessUrl("/login/success", true)
 		).logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
+				.addLogoutHandler(cookies)
         );
         http.csrf(csrf -> csrf.disable());
 //        http.csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()));
