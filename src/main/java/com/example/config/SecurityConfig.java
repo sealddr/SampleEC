@@ -48,8 +48,7 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/login?logout")
 				.addLogoutHandler(cookies)
         );
-        http.csrf(csrf -> csrf.disable());
-//        http.csrf(csrf -> csrf.ignoringRequestMatchers(PathRequest.toH2Console()));
+		
         http.headers(headers -> headers.frameOptions().disable()); 		
 		return http.build();
 		
