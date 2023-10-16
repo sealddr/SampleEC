@@ -30,10 +30,16 @@
                     <label for="password" class="form-label visually-hidden">パスワード</label>
                     <input type="text" class="form-control" th:placeholder="#{login.password}" name="password" />
                 </div>
-                <input type="submit" th:value="#{login.btn}" class="btn btn-primary" />
+                <div class="d-grid gap-2 mb-3">
+                    <input type="submit" th:value="#{login.btn}" class="btn btn-primary" />
+                </div>
             </form>
-            <a th:href="@{/signup}" th:text="#{login.signup}"></a>
-            <a th:href="@{/}" th:text="#{login.home}"></a>
+            <div class="mb-3" >
+                <a th:href="@{/signup}" th:text="#{login.signup}"></a>
+            </div>
+            <div class="mb-3" >
+                <a th:href="@{/}" th:text="#{login.home}"></a>
+            </div>
         </div>
     </body>
     </html>
