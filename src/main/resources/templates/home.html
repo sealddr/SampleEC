@@ -4,6 +4,8 @@
     layout:decorate="~{layout/layout}">
 
 <head>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <script th:src="@{/js/cart/cart.js}" defer></script>
     <title>デジタル教材ショッピング.com</title>
 </head>

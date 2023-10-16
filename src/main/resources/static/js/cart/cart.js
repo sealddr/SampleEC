@@ -13,6 +13,12 @@ jQuery(function($){
 });
 
 function addToCart(form){
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    $(document).ajaxSend(function(e, xhr, options) {
+      xhr.setRequestHeader(header, token);
+    });
+
     var formData = form.serializeArray();
     $.ajax({
         type : "POST",
@@ -20,7 +26,9 @@ function addToCart(form){
         url : '/cart/add',
         data : formData,
         dataType: "json",
-
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_csrf_header"]').attr('content'),
+           }
         }).done(function(result){
             if(0===result){
                 alert('カートに追加しました');
@@ -38,6 +46,12 @@ function addToCart(form){
 }
 
 function removeFromCart(form){
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    $(document).ajaxSend(function(e, xhr, options) {
+      xhr.setRequestHeader(header, token);
+    });
+
     var formData = form.serializeArray();
     $.ajax({
         type : "DELETE",
