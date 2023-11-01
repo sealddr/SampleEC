@@ -32,7 +32,7 @@ public class ShoppingSearchController {
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping("/store/")
+	@GetMapping("/store")
 	public String shoppingSearch(@ModelAttribute ShoppingSearchForm form, Model model) {
 		initializeSession();
 		
