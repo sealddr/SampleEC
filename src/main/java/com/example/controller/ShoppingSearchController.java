@@ -62,7 +62,7 @@ public class ShoppingSearchController {
 		
 	}
 
-	@PostMapping("/")
+	@PostMapping("/store")
 	public String postShoppingSearch(@ModelAttribute ShoppingSearchForm form, Model model) {
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
 		model.addAttribute("goodsCategoryList", goodsCategoryList);
@@ -72,7 +72,7 @@ public class ShoppingSearchController {
 		List<MGoods> goodsList = goodsService.getGoods(searchKeys);
 		model.addAttribute("goodsList", goodsList);
 		
-		return "home";
+		return "store/home";
 		
 	}
 }
