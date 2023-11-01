@@ -32,7 +32,7 @@ public class ShoppingSearchController {
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping("/")
+	@GetMapping("/store/")
 	public String shoppingSearch(@ModelAttribute ShoppingSearchForm form, Model model) {
 		initializeSession();
 		
@@ -44,7 +44,7 @@ public class ShoppingSearchController {
 		List<MGoods> goodsList = goodsService.getGoods(searchKeys);
 		model.addAttribute("goodsList", goodsList);
 		
-		return "home";
+		return "store/home";
 	}
 	
 	private void initializeSession() {
