@@ -23,7 +23,7 @@ function addToCart(form){
     $.ajax({
         type : "POST",
         cache : false,
-        url : '/cart/add',
+        url : '/store/cart/add',
         data : formData,
         dataType: "json",
         headers: {
@@ -56,7 +56,7 @@ function removeFromCart(form){
     $.ajax({
         type : "DELETE",
         cache : false,
-        url : '/cart/remove',
+        url : '/store/cart/remove',
         data : formData,
         dataType: "json",
 
