@@ -18,7 +18,7 @@ public class ViewCartController {
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping("/cart/view")
+	@GetMapping("/store/cart/view")
 	public String getViewCart(Model model) {
 		MCart cart = (MCart) session.getAttribute("cart");
 		if(null == cart) {
