@@ -33,6 +33,7 @@ public class SecurityConfig {
 				.requestMatchers(mvc.pattern("/store/cart/add")).permitAll()
 				.requestMatchers(mvc.pattern("/store/cart/remove")).permitAll()
 				.requestMatchers(mvc.pattern("/store/cart/view")).permitAll()
+				.requestMatchers(mvc.pattern("/store/cart/view/loginInstraction")).permitAll()
 				.requestMatchers(mvc.pattern("/login")).permitAll()
 				.requestMatchers(mvc.pattern("/signup")).permitAll()
 				.requestMatchers(mvc.pattern("/admin")).hasRole("ADMIN")
