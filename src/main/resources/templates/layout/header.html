@@ -27,6 +27,12 @@
                         <a th:href="@{/signup}" >コチラ</a>                    
                     </div>        
                 </div>
+                <div class="col col-sm-2">
+                    <div sec:authorize="isAuthenticated()" class="flex-column">
+                        <!-- ログインしているユーザーの名前を表示-->
+                        <span class="navbar-text" sec:authorize="isAuthenticated()" th:text="${#authentication.name} + 'さんでログインしています'"></span>
+                    </div>        
+                </div>
             </div>        
         </nav>
         <nav class="navbar navbar-expand navbar-light bg-light">
