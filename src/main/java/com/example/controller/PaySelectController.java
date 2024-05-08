@@ -11,7 +11,7 @@ import com.example.domain.payment.service.PaymentMethodService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/buy")
+@RequestMapping("/store")
 public class PaySelectController {
 
 	@Autowired
@@ -24,6 +24,6 @@ public class PaySelectController {
 	public String getPaySelect(Model model) {
 		model.addAttribute("cart", session.getAttribute("cart"));
 		model.addAttribute("paymentMethodList", paymentMethodService.getAllPaymentMethods());
-		return "buy/payselect";
+		return "store/payselect";
 	}
 }

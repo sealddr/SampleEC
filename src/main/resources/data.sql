@@ -117,7 +117,7 @@ INSERT INTO m_payment_method (
 ) VALUES (
     0,
     'デモ用決済',
-    '/buy/demopay/confirm'
+    '/store/demopay/confirm'
 ),
 (
     1,
