@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/buy/demopay")
+@RequestMapping("/store/demopay")
 public class DemoPayConfirmController {
 	
     @Autowired
@@ -19,7 +19,7 @@ public class DemoPayConfirmController {
    	@GetMapping("/confirm")
 	public String getPaySelect(Model model) {
 		model.addAttribute("cart", session.getAttribute("cart"));
-		return "buy/demopay/confirm";
+		return "store/demopay/confirm";
 	}
 
     @PostMapping("/confirm")
@@ -31,6 +31,6 @@ public class DemoPayConfirmController {
         //カートの中身を削除する
 		model.addAttribute("cart", session.getAttribute("cart"));
         session.removeAttribute("cart");
-        return "buy/demopay/result";
+        return "store/demopay/result";
     }
 }
