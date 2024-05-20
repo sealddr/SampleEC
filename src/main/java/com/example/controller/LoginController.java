@@ -42,7 +42,7 @@ public class LoginController {
 
     	// ロールが"ROLE_ADMIN"の場合
     	if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
-        	return "redirect:/admin/products/";
+        	return "redirect:/admin/products";
     	}
 
 		// カートに遷移する場合

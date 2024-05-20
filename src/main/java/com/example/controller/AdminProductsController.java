@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/admin/products")
-public class ProductsIndexController {
+@RequestMapping("/admin")
+public class AdminProductsController {
     
-        @RequestMapping("/")
+        @RequestMapping("/products")
         public String index() {
-            return "admin/products/index";
+            return "admin/products";
         }
     
 }
