@@ -17,7 +17,7 @@ INSERT INTO m_goods_category (
 ),
 (
     4,
-    '趣味娯楽'
+    'その他'
 );
 
 -- 商品の初期データ
