@@ -9,8 +9,25 @@
 
 <body>
     <div layout:fragment="content">
+        <!-- パンくずリスト -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="/admin">管理者メニュー</a></li>
+                <li>" / "</li>
+                <li class="active">商品管理</li>
+            </ol>
+        </div>
+
         <div class="container">
             <h1>商品管理ページ</h1>
+
+        </div>
+
+        <hr>
+
+        <!-- 管理者メニューに戻るボタンを追加 -->
+        <div class="container">
+            <a href="/admin" class="btn btn-secondary">管理者メニューに戻る</a>
         </div>
     </div>
 </body>
