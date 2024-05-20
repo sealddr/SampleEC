@@ -1,8 +1,14 @@
 package com.example.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,10 +32,18 @@ public class LoginController {
 	}
 	
 	@GetMapping("/login/success")
-	public String getLoginSuccess(Model model) {
+	public String getLoginSuccess(Model model, Principal principal) {
 
 		LoginTransitionSource loginTransitionSource = (LoginTransitionSource) session.getAttribute("loginTransitionSource");	
 		session.setAttribute("loginTransitionSource", LoginTransitionSource.INVALID);
+
+    	// ユーザーのロールを取得
+    	Collection<? extends GrantedAuthority> authorities = ((UserDetails) ((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getAuthorities();
+
+    	// ロールが"ROLE_ADMIN"の場合
+    	if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+        	return "redirect:/admin/products/";
+    	}
 
 		// カートに遷移する場合
 		if(loginTransitionSource.equals(LoginTransitionSource.POST_STORE_CART_VIEW)){
@@ -42,7 +56,7 @@ public class LoginController {
 			model.addAttribute("cart", cart);
 			return "redirect:/store/cart/view";
 
-		}
+		}		
 
 		// ホームに遷移する場合
 		return "redirect:/";
