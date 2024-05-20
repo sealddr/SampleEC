@@ -36,9 +36,10 @@ public class SecurityConfig {
 				.requestMatchers(mvc.pattern("/store/cart/view/loginInstraction")).permitAll()
 				.requestMatchers(mvc.pattern("/login")).permitAll()
 				.requestMatchers(mvc.pattern("/signup")).permitAll()
-				.requestMatchers(mvc.pattern("/admin")).hasRole("ADMIN")
 				.requestMatchers(mvc.pattern("/webjars/**")).permitAll()
 				.requestMatchers(mvc.pattern("/error")).permitAll()
+				.requestMatchers(mvc.pattern("/admin")).hasRole("ROLE_ADMIN")
+				.requestMatchers(mvc.pattern("/admin/products")).hasRole("ROLE_ADMIN")
 				.anyRequest().authenticated()
 		).formLogin(login -> login
 				.loginProcessingUrl("/login")
