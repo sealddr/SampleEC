@@ -21,7 +21,7 @@ import com.example.domain.cart.model.MCart;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class ShoppingSearchController {
+public class StoreController {
 
 	@Autowired
 	private GoodsService goodsService;
@@ -33,7 +33,7 @@ public class ShoppingSearchController {
 	private HttpSession session;
 	
 	@GetMapping("/store")
-	public String shoppingSearch(@ModelAttribute ShoppingSearchForm form, Model model) {
+	public String getStore(@ModelAttribute ShoppingSearchForm form, Model model) {
 		initializeSession();
 		
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
@@ -63,7 +63,7 @@ public class ShoppingSearchController {
 	}
 
 	@PostMapping("/store")
-	public String postShoppingSearch(@ModelAttribute ShoppingSearchForm form, Model model) {
+	public String postStore(@ModelAttribute ShoppingSearchForm form, Model model) {
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
 		model.addAttribute("goodsCategoryList", goodsCategoryList);
 		
