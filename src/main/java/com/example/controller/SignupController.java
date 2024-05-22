@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.domain.user.model.MUser;
 import com.example.domain.user.model.Occupation;
 import com.example.domain.user.service.UserService;
-import com.example.form.BuySignupForm;
+import com.example.form.SignupForm;
 import com.example.form.GroupOrder;
 
 import jakarta.servlet.http.HttpSession;
@@ -33,7 +33,7 @@ public class SignupController {
 	private HttpSession session;
 
 	@GetMapping("/signup")
-	public String getSignup(Model model, @ModelAttribute BuySignupForm form) {
+	public String getSignup(Model model, @ModelAttribute SignupForm form) {
 		
 		List<Occupation> occupationList = userService.getOccupations();
 		model.addAttribute("occupationList", occupationList);
@@ -42,7 +42,7 @@ public class SignupController {
 	
 	@PostMapping("/signup")
 	public String postSignup(Model model,
-			@ModelAttribute @Validated(GroupOrder.class) BuySignupForm form, BindingResult bindingResult) {
+			@ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
 			return getSignup(model, form);

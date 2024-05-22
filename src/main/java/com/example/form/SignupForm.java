@@ -12,7 +12,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-public class BuySignupForm {
+public class SignupForm {
 	@NotBlank(groups = ValidGroup1.class)
 	@Email(groups = ValidGroup2.class)
 	private String userId;
