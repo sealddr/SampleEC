@@ -18,45 +18,49 @@
 
         <!-- 商品登録モーダルダイアログ -->
         <div id="register-goods-area" class="register-goods-area">
-            <form class="form-register-goods">
+            <form class="register-goods-form" method="post" th:action="@{/admin/goods/register}"
+            th:object="${registerGoodsForm}">
                 <h1 class="text-center">商品登録</h1>
                 <!-- 教材名 -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">教材名</label>
-                    <input type="text" class="form-control"/>
+                    <input type="text" class="form-control" th:field="*{goodsName}"/>
                 </div>
     
                 <!-- 説明 -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">説明</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" th:field="*{goodsDescription}"></textarea>
                 </div>
     
-                <!-- 教材名 -->
+                <!-- 教材カテゴリ -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">教材カテゴリ</label>
-                    <select class="form-select">
-                        <option value="1">就職活動</option>
-                        <option value="2">資格取得</option>
-                        <option value="3">仕事術</option>
-                        <option value="4">その他</option>
+                    <select class="form-select" th:field="*{goodsCategoryId}">
+                        <option value="0" selected>教材カテゴリを選んで検索</option>
+                        <option
+                            th:each="goodsCategories : ${goodsCategoryList}"
+                            th:value="${goodsCategories.goodsCategoryId}"
+                            th:text="${goodsCategories.goodsCategoryName}">
+                        </option>
                     </select>
                 </div>
     
                 <!-- 価格 -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">価格</label>
-                    <input type="text" class="form-control"/>
+                    <input type="text" class="form-control" th:field="*{price}"/>
                 </div>
     
                 <!-- サービスURL -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">サービスURL</label>
-                    <input type="text" class="form-control"/>
+                    <input type="text" class="form-control" th:field="*{serviceURL}"/>
                 </div>
     
                 <!-- 登録ボタン -->
-                <button id="btn-register-goods-submit" type="button" class="btn btn-primary w-100 mt-3">
+                <!-- admin/goods/register へ post リクエストを submit するボタンを追加-->
+                <button id="btn-register-goods-submit" type="submit" class="btn btn-primary w-100 mt-3">
                     登録
                 </button>
     
