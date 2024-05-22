@@ -5,10 +5,10 @@
 
 <head>
     <!-- CSS読み込み -->
-    <link rel="stylesheet" th:href="@{/css/admin/products.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/goods.css}">
 
     <!-- JS読み込み -->
-    <script th:src="@{/js/admin/products.js}" defer></script>
+    <script th:src="@{/js/admin/goods.js}" defer></script>
 
     <title>商品管理ページ</title>
 </head>
@@ -16,6 +16,59 @@
 <body>
     <div layout:fragment="content">
 
+        <!-- 商品登録モーダルダイアログ -->
+        <div id="register-goods-area" class="register-goods-area">
+            <form class="form-register-goods">
+                <h1 class="text-center">商品登録</h1>
+                <!-- 教材名 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">教材名</label>
+                    <input type="text" class="form-control"/>
+                </div>
+    
+                <!-- 説明 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">説明</label>
+                    <textarea class="form-control"></textarea>
+                </div>
+    
+                <!-- 教材名 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">教材カテゴリ</label>
+                    <select class="form-select">
+                        <option value="1">就職活動</option>
+                        <option value="2">資格取得</option>
+                        <option value="3">仕事術</option>
+                        <option value="4">その他</option>
+                    </select>
+                </div>
+    
+                <!-- 価格 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">価格</label>
+                    <input type="text" class="form-control"/>
+                </div>
+    
+                <!-- サービスURL -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">サービスURL</label>
+                    <input type="text" class="form-control"/>
+                </div>
+    
+                <!-- 登録ボタン -->
+                <button id="btn-register-goods-submit" type="button" class="btn btn-primary w-100 mt-3">
+                    登録
+                </button>
+    
+                <!-- 戻るボタン -->
+                <button id="btn-register-goods-cancel" type="button" class="btn btn-secondary w-100 mt-3">
+                    戻る
+                </button>
+            
+            </form>
+        </div>
+
+        <!-- 商品管理ページ -->
         <div>
             <!-- パンくずリスト -->
             <div class="container">
