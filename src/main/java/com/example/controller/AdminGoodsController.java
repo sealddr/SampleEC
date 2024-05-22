@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminProductsController {
+public class AdminGoodsController {
     
 	@Autowired
 	private GoodsService goodsService;
@@ -30,7 +30,7 @@ public class AdminProductsController {
 	private ModelMapper modelMapper;
 
 
-    @GetMapping("/products")
+    @GetMapping("/goods")
     public String getAdminProducts(@ModelAttribute ShoppingSearchForm form, Model model) {
 
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
@@ -41,10 +41,10 @@ public class AdminProductsController {
 		List<MGoods> goodsList = goodsService.getGoods(searchKeys);
 		model.addAttribute("goodsList", goodsList);
 
-            return "admin/products";
+            return "admin/goods";
     }
 
-    @PostMapping("/products")
+    @PostMapping("/goods")
     public String postAdminProducts(@ModelAttribute ShoppingSearchForm form, Model model) {
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
 		model.addAttribute("goodsCategoryList", goodsCategoryList);
@@ -54,7 +54,7 @@ public class AdminProductsController {
 		List<MGoods> goodsList = goodsService.getGoods(searchKeys);
 		model.addAttribute("goodsList", goodsList);
         
-        return "admin/products";
+        return "admin/goods";
     }
     
     
