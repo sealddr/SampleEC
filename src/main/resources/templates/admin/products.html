@@ -4,6 +4,12 @@
     layout:decorate="~{layout/layout}">
 
 <head>
+    <!-- CSS読み込み -->
+    <link rel="stylesheet" th:href="@{/css/admin/products.css}">
+
+    <!-- JS読み込み -->
+    <script th:src="@{/js/admin/products.js}" defer></script>
+
     <title>商品管理ページ</title>
 </head>
 
@@ -46,7 +52,7 @@
 
             <!-- 管理者メニューに戻るボタンを追加 -->
             <div class="container">
-                <a href="/admin" class="btn btn-secondary">管理者メニューに戻る</a>
+                <a href="/admin" id="btn-back2admin" class="btn btn-secondary">管理者メニューに戻る</a>
             </div>
         </div>
 
