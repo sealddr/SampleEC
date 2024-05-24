@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.example.domain.goods.model.MGoods;
 import com.example.domain.goods.model.MGoodsCategory;
 import com.example.domain.goods.model.MGoodsSearchKeys;
 import com.example.domain.goods.service.GoodsService;
+import com.example.form.GroupOrder;
 import com.example.form.RegisterGoodsForm;
 import com.example.form.SearchGoodsForm;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,7 +67,7 @@ public class AdminGoodsController {
 	@PostMapping("/goods/register")
 	public String postAdminRegisterGoods(
 		@ModelAttribute SearchGoodsForm goodsSearchForm,
-		@ModelAttribute RegisterGoodsForm registerGoodsForm,
+		@ModelAttribute @Validated(GroupOrder.class) RegisterGoodsForm registerGoodsForm,
 		Model model) {
 		MGoods goods = new MGoods();
 

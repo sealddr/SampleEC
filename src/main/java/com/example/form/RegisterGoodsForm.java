@@ -15,7 +15,6 @@ public class RegisterGoodsForm {
 
     private int goodsCategoryId;
 
-    @NotBlank(groups = ValidGroup1.class)
     @Digits(integer = 9, fraction = 0, groups = ValidGroup2.class)
     private int price;
 
