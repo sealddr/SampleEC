@@ -21,7 +21,7 @@
         <div class="container">
             <h2>教材一覧</h2>
             <form id="goods-search-form" method="post" th:action="@{/store}"
-                th:object="${shoppingSearchForm}">
+                th:object="${searchGoodsForm}">
                 <div class="row mb-4">
                     <div class="col-sm">
                         <select class="form-select" th:field="*{goodsCategoryId}">

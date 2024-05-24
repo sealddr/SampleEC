@@ -14,7 +14,8 @@ import com.example.domain.goods.model.MGoods;
 import com.example.domain.goods.model.MGoodsCategory;
 import com.example.domain.goods.model.MGoodsSearchKeys;
 import com.example.domain.goods.service.GoodsService;
-import com.example.form.ShoppingSearchForm;
+import com.example.form.RegisterGoodsForm;
+import com.example.form.SearchGoodsForm;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -31,12 +32,15 @@ public class AdminGoodsController {
 
 
     @GetMapping("/goods")
-    public String getAdminProducts(@ModelAttribute ShoppingSearchForm form, Model model) {
+    public String getAdminProducts(
+		@ModelAttribute SearchGoodsForm goodsSearchForm,
+		@ModelAttribute RegisterGoodsForm registerSearchForm,
+		Model model) {
 
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
 		model.addAttribute("goodsCategoryList", goodsCategoryList);
 		
-		MGoodsSearchKeys searchKeys = modelMapper.map(form, MGoodsSearchKeys.class);
+		MGoodsSearchKeys searchKeys = modelMapper.map(goodsSearchForm, MGoodsSearchKeys.class);
 		
 		List<MGoods> goodsList = goodsService.getGoods(searchKeys);
 		model.addAttribute("goodsList", goodsList);
@@ -45,11 +49,11 @@ public class AdminGoodsController {
     }
 
     @PostMapping("/goods")
-    public String postAdminProducts(@ModelAttribute ShoppingSearchForm form, Model model) {
+    public String postAdminProducts(@ModelAttribute SearchGoodsForm goodsSearchForm, Model model) {
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
 		model.addAttribute("goodsCategoryList", goodsCategoryList);
 		
-		MGoodsSearchKeys searchKeys = modelMapper.map(form, MGoodsSearchKeys.class);
+		MGoodsSearchKeys searchKeys = modelMapper.map(goodsSearchForm, MGoodsSearchKeys.class);
 		
 		List<MGoods> goodsList = goodsService.getGoods(searchKeys);
 		model.addAttribute("goodsList", goodsList);

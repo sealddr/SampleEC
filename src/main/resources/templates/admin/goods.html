@@ -13,13 +13,14 @@
     <title>商品管理ページ</title>
 </head>
 
-<body>
+<body>    
     <div layout:fragment="content">
 
         <!-- 商品登録モーダルダイアログ -->
         <div id="register-goods-area" class="register-goods-area">
             <form class="register-goods-form" method="post" th:action="@{/admin/goods/register}"
             th:object="${registerGoodsForm}">
+            
                 <h1 class="text-center">商品登録</h1>
                 <!-- 教材名 -->
                 <div class="mb-2">
@@ -111,7 +112,7 @@
                 </div>
 
                 <form id="admin-goods-search-form" method="post" th:action="@{/admin/goods}"
-                th:object="${shoppingSearchForm}">
+                th:object="${searchGoodsForm}">
                 <div class="row mb-4">
                     <div class="col-sm">
                         <select class="form-select" th:field="*{goodsCategoryId}">

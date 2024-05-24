@@ -15,7 +15,7 @@ import com.example.domain.goods.model.MGoods;
 import com.example.domain.goods.model.MGoodsCategory;
 import com.example.domain.goods.model.MGoodsSearchKeys;
 import com.example.domain.goods.service.GoodsService;
-import com.example.form.ShoppingSearchForm;
+import com.example.form.SearchGoodsForm;
 import com.example.domain.cart.model.MCart;
 
 import jakarta.servlet.http.HttpSession;
@@ -33,7 +33,7 @@ public class StoreController {
 	private HttpSession session;
 	
 	@GetMapping("/store")
-	public String getStore(@ModelAttribute ShoppingSearchForm form, Model model) {
+	public String getStore(@ModelAttribute SearchGoodsForm form, Model model) {
 		initializeSession();
 		
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
@@ -63,7 +63,7 @@ public class StoreController {
 	}
 
 	@PostMapping("/store")
-	public String postStore(@ModelAttribute ShoppingSearchForm form, Model model) {
+	public String postStore(@ModelAttribute SearchGoodsForm form, Model model) {
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
 		model.addAttribute("goodsCategoryList", goodsCategoryList);
 		
