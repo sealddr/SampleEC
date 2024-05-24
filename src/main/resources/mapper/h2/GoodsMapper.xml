@@ -37,6 +37,7 @@
 			 </if>
 		 </where>
 	</select>
+
 	<select id="findOne" resultMap="goods">
 		select
 			*
@@ -47,4 +48,11 @@
 		where
 			goods_id = #{goodsId}
 	</select>
+
+	<insert id="insertOne">
+		insert into m_goods
+		(goods_id, goods_name, goods_description, price, goods_category_id)
+		values
+		(#{goodsId}, #{goodsName}, #{goodsDescription}, #{price}, #{goodsCategoryId})
+	</insert>
 </mapper>

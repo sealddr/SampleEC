@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,7 @@ public class AdminGoodsController {
     @GetMapping("/goods")
     public String getAdminProducts(
 		@ModelAttribute SearchGoodsForm goodsSearchForm,
-		@ModelAttribute RegisterGoodsForm registerSearchForm,
+		@ModelAttribute RegisterGoodsForm registerGoodsForm,
 		Model model) {
 
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
@@ -61,5 +62,23 @@ public class AdminGoodsController {
         return "admin/goods";
     }
     
+	@PostMapping("/goods/register")
+	public String postAdminRegisterGoods(
+		@ModelAttribute SearchGoodsForm goodsSearchForm,
+		@ModelAttribute RegisterGoodsForm registerGoodsForm,
+		Model model) {
+		MGoods goods = new MGoods();
+
+		// goodsのgoodsIdにregisterGoodsFormのMD5ハッシュを設定		
+		goods.setGoodsId(DigestUtils.md5DigestAsHex(registerGoodsForm.toString().getBytes()));
+
+		goods.setGoodsName(registerGoodsForm.getGoodsName());
+		goods.setGoodsDescription(registerGoodsForm.getGoodsDescription());
+		goods.setGoodsCategoryId(registerGoodsForm.getGoodsCategoryId());
+		goods.setPrice(registerGoodsForm.getPrice());
+
+		goodsService.registerGoods(goods);
+		return "redirect:/admin/goods";
+	}
     
 }

@@ -13,4 +13,6 @@ public interface GoodsService {
 	public List<MGoods> getGoods(MGoodsSearchKeys searchKeys);
 	
 	public MGoods getGoodsOne(String goodsId);
+
+	public void registerGoods(MGoods goods);
 }

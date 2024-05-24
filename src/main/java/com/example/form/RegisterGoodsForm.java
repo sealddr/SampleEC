@@ -13,11 +13,11 @@ public class RegisterGoodsForm {
     @NotBlank(groups = ValidGroup1.class)
     private String goodsDescription;
 
-    private String goodsCategoryId;
+    private int goodsCategoryId;
 
     @NotBlank(groups = ValidGroup1.class)
     @Digits(integer = 9, fraction = 0, groups = ValidGroup2.class)
-    private String price;
+    private int price;
 
     @NotBlank(groups = ValidGroup1.class)
     @Pattern(regexp = "^[a-z]+(\\/[a-z]+)*$", groups = ValidGroup2.class)

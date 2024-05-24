@@ -16,4 +16,6 @@ public interface GoodsMapper {
 	public List<MGoods> findAllGoods(MGoodsSearchKeys keys);
 	
 	public MGoods findOne(String goodsId);
+
+	public void insertOne(MGoods goods);
 }
