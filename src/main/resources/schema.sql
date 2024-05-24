@@ -1,6 +1,6 @@
 -- 商品マスタ
 CREATE TABLE IF NOT EXISTS m_goods (
-    goods_id VARCHAR(150) PRIMARY KEY,
+    goods_id VARCHAR(50) PRIMARY KEY,
     goods_name VARCHAR(50),
     goods_description VARCHAR(200),
     goods_category_id INT,    
