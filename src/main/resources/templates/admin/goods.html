@@ -21,7 +21,7 @@
             <form class="register-goods-form" method="post" th:action="@{/admin/goods/register}"
             th:object="${registerGoodsForm}">
             
-                <h1 class="text-center">商品登録</h1>
+                <h1 class="text-center">商品登録</h1>    
                 <!-- 教材名 -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">教材名</label>
@@ -57,24 +57,28 @@
                 <div class="mb-2">
                     <label for="userId" class="form-label">サービスURL</label>
                     <input type="text" class="form-control" th:field="*{serviceURL}"/>
-                </div>
-    
-                <!-- 登録ボタン -->
-                <!-- admin/goods/register へ post リクエストを submit するボタンを追加-->
-                <button id="btn-register-goods-submit" type="submit" class="btn btn-primary w-100 mt-3">
-                    登録
-                </button>
-    
-                <!-- 戻るボタン -->
-                <button id="btn-register-goods-cancel" type="button" class="btn btn-secondary w-100 mt-3">
-                    戻る
-                </button>
-            
+                </div>    
+
+                <div class="row">
+                    <div class="col">
+                        <!-- 登録ボタン -->
+                        <!-- admin/goods/register へ post リクエストを submit するボタンを追加-->
+                        <button id="btn-register-goods-submit" type="submit" class="btn btn-primary w-100 mt-3">
+                            登録
+                        </button>
+                    </div>
+                    <div class="col">
+                        <!-- 戻るボタン -->
+                        <button id="btn-register-goods-cancel" type="button" class="btn btn-secondary w-100 mt-3">
+                            戻る
+                        </button>
+                    </div>
+                </div>                  
             </form>
         </div>
 
         <!-- 商品管理ページ -->
-        <div>
+        <div class="goods-manage-page">
             <!-- パンくずリスト -->
             <div class="container">
                 <ol class="breadcrumb">
@@ -165,7 +169,7 @@
                     </tr>
                 </tbody>
             </table>
-
+        </div>
     </div>
 </body>
 </html>
