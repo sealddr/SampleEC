@@ -53,6 +53,6 @@ public class SignupController {
 		
 		model.addAttribute("cart", session.getAttribute("cart"));		
 
-		return "cart/view";
+		return "login";
 	}
 }
