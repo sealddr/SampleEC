@@ -71,9 +71,6 @@ public class AdminGoodsController {
 		Model model) {
 		MGoods goods = new MGoods();
 
-		// goodsのgoodsIdにregisterGoodsFormのMD5ハッシュを設定		
-		goods.setGoodsId(DigestUtils.md5DigestAsHex(registerGoodsForm.toString().getBytes()));
-
 		goods.setGoodsName(registerGoodsForm.getGoodsName());
 		goods.setGoodsDescription(registerGoodsForm.getGoodsDescription());
 		goods.setGoodsCategoryId(registerGoodsForm.getGoodsCategoryId());

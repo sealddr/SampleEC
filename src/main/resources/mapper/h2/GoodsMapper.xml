@@ -53,6 +53,6 @@
 		insert into m_goods
 		(goods_id, goods_name, goods_description, price, goods_category_id)
 		values
-		(#{goodsId}, #{goodsName}, #{goodsDescription}, #{price}, #{goodsCategoryId})
+		(NEXTVAL('goods_seq'), #{goodsName}, #{goodsDescription}, #{price}, #{goodsCategoryId})
 	</insert>
 </mapper>

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class MGoods {
-	private String goodsId;
+	private int goodsId;
 	private String goodsName;
 	private String goodsDescription;
 	private int goodsCategoryId;
