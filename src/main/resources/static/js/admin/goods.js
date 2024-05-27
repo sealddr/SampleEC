@@ -30,17 +30,37 @@ registerCancelButton.addEventListener('click', function() {
 
 });
 
-window.onload = function() {
-    var updateButtons = document.querySelectorAll('.btn-update-goods');
+var updateButtons = document.querySelectorAll('.btn-update-goods');
 
-    updateButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            var element = document.getElementById('update-goods-area');
-            element.style.display = 'block';
+updateButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        var element = document.getElementById('update-goods-area');
+        element.style.display = 'block';
         
-            // bodyのスクロールを無効にする
-            document.body.style.overflow = 'hidden';
+        // bodyのスクロールを無効にする
+        document.body.style.overflow = 'hidden';
     
-        });
     });
-};
+});
+
+var updateSubmitButton = document.getElementById('btn-update-goods-submit');
+
+updateSubmitButton.addEventListener('click', function() {
+    var element = document.getElementById('update-goods-area');
+    element.style.display = 'none';
+
+    // bodyのスクロールを有効にする
+    document.body.style.overflow = 'auto';
+
+});
+
+var updateCancelButton = document.getElementById('btn-update-goods-cancel');
+
+updateCancelButton.addEventListener('click', function() {
+    var element = document.getElementById('update-goods-area');
+    element.style.display = 'none';
+
+    // bodyのスクロールを有効にする
+    document.body.style.overflow = 'auto';
+
+});
