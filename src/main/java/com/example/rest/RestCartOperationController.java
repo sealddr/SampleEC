@@ -34,7 +34,7 @@ public class RestCartOperationController {
 	public int postAddToCart(AddToCartForm form) {
 		log.debug(form.toString());
 		MCart cart = (MCart) session.getAttribute("cart");
-		String goodsId = form.getGoodsId();
+		int goodsId = form.getGoodsId();
 		if(cartService.hasAlreadyAdded(cart, goodsId)) return 1;
 				
 		MGoods goods = goodsService.getGoodsOne(goodsId);
@@ -45,7 +45,7 @@ public class RestCartOperationController {
 	@DeleteMapping("/remove")
 	public int postRemoveFromCart(RemoveFromCartForm form) {
 		MCart cart = (MCart) session.getAttribute("cart");
-		String goodsId = form.getGoodsId();
+		int goodsId = form.getGoodsId();
 					
 		cartService.remove(goodsId, cart);
 		return 0;
