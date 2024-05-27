@@ -34,6 +34,14 @@ var updateButtons = document.querySelectorAll('.btn-update-goods');
 
 updateButtons.forEach(function(button) {
     button.addEventListener('click', function() {
+        fetch('/api/goods/' + goodsId)
+            .then(response => response.json())
+            .then(data => {
+                var updateForm = document.querySelector('.update-goods-form');
+                updateForm.querySelector('.input-update-goodsname').value = data.goodsName;
+                updateForm.querySelector('.textarea-update-goodsdescription').value = data.goodsDescription;
+        });
+
         var element = document.getElementById('update-goods-area');
         element.style.display = 'block';
         
