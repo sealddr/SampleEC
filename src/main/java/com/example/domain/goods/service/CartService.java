@@ -5,10 +5,10 @@ import com.example.domain.goods.model.MGoods;
 
 public interface CartService {
 
-	boolean hasAlreadyAdded(MCart cart, String goodsId);
+	boolean hasAlreadyAdded(MCart cart, int goodsId);
 
-	void add(MGoods goods,MCart cart);
+	void add(MGoods goods, MCart cart);
 
-	void remove(String goodsId, MCart cart);
+	void remove(int goodsId, MCart cart);
 
 }

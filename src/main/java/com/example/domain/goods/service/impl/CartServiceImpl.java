@@ -12,26 +12,26 @@ import com.example.domain.goods.service.CartService;
 public class CartServiceImpl implements CartService {
 
 	@Override
-	public boolean hasAlreadyAdded(MCart cart, String goodsId) {
+	public boolean hasAlreadyAdded(MCart cart, int goodsId) {
 		List<MGoods> cartItems = cart.getCartItems();
 		for (MGoods goods : cartItems) {
-			if(goodsId.equals(goods.getGoodsId())) return true;
+			if(goodsId == goods.getGoodsId()) return true;
 		}
 		return false;
 	}
 
 	@Override
-	public void add(MGoods goods,MCart cart) {
+	public void add(MGoods goods, MCart cart) {
 		cart.getCartItems().add(goods);
 		cart.setSumPrice(cart.getSumPrice() + goods.getPrice());
 	}
 
 	@Override
-	public void remove(String goodsId, MCart cart) {
+	public void remove(int goodsId, MCart cart) {
 		List<MGoods> cartItems = cart.getCartItems();
 		MGoods target = null;
 		for (MGoods item : cartItems) {
-			if(goodsId.equals(item.getGoodsId())) {
+			if(goodsId == item.getGoodsId()) {
 				target = item;
 				break;
 			}
@@ -39,6 +39,8 @@ public class CartServiceImpl implements CartService {
 		cartItems.remove(target);
 		if(null != target){
 			cart.setSumPrice(cart.getSumPrice() - target.getPrice());			
+		}else{
+			cart.setSumPrice(0);
 		}
 
 		

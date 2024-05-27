@@ -28,7 +28,7 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 
 	@Override
-	public MGoods getGoodsOne(String goodsId) {
+	public MGoods getGoodsOne(int goodsId) {
 		return mapper.findOne(goodsId);
 	}
 
