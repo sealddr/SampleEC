@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/store/cart")
+@RequestMapping("/api/cart")
 @Slf4j
 public class RestCartOperationController {
 	
