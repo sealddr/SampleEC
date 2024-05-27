@@ -18,6 +18,8 @@ import com.example.domain.goods.service.GoodsService;
 import com.example.form.GroupOrder;
 import com.example.form.RegisterGoodsForm;
 import com.example.form.SearchGoodsForm;
+import com.example.form.UpdateGoodsForm;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -37,6 +39,7 @@ public class AdminGoodsController {
     public String getAdminProducts(
 		@ModelAttribute SearchGoodsForm goodsSearchForm,
 		@ModelAttribute RegisterGoodsForm registerGoodsForm,
+		@ModelAttribute UpdateGoodsForm updateGoodsForm,
 		Model model) {
 
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		

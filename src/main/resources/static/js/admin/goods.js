@@ -2,7 +2,6 @@ var registerButton = document.getElementById('btn-register-goods');
 
 registerButton.addEventListener('click', function() {
     var element = document.getElementById('register-goods-area');
-    // elementのcssにdisplay: none;が設定されている場合display: block;に変更する
     element.style.display = 'block';
 
     // bodyのスクロールを無効にする
@@ -30,3 +29,18 @@ registerCancelButton.addEventListener('click', function() {
     document.body.style.overflow = 'auto';
 
 });
+
+window.onload = function() {
+    var updateButtons = document.querySelectorAll('.btn-update-goods');
+
+    updateButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var element = document.getElementById('update-goods-area');
+            element.style.display = 'block';
+        
+            // bodyのスクロールを無効にする
+            document.body.style.overflow = 'hidden';
+    
+        });
+    });
+};

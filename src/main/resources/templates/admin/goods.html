@@ -81,6 +81,70 @@
             </form>
         </div>
 
+        <!-- 商品変更モーダルダイアログ -->
+        <div id="update-goods-area" class="update-goods-area">
+            <form class="update-goods-form" method="post" th:action="@{/admin/goods/update}"
+            th:object="${updateGoodsForm}">
+            
+                <h1 class="text-center">商品変更</h1>    
+                <!-- 教材名 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">教材名</label>
+                    <input type="text" class="form-control input-update-goodsname" th:field="*{goodsName}" th:errorclass="is-invalid"/>
+                    <div class="invalid-feedback" th:errors="*{goodsName}"></div>
+                </div>
+    
+                <!-- 説明 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">説明</label>
+                    <textarea class="form-control textarea-update-goodsdescription" th:field="*{goodsDescription}" th:errorclass="is-invalid"></textarea>
+                    <div class="invalid-feedback" th:errors="*{goodsDescription}"></div>
+                </div>
+
+                <!-- 教材カテゴリ -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">教材カテゴリ</label>
+                    <select class="form-select select-update-goodscategory" th:field="*{goodsCategoryId}">
+                        <option
+                            th:each="goodsCategories : ${goodsCategoryList}"
+                            th:value="${goodsCategories.goodsCategoryId}"
+                            th:text="${goodsCategories.goodsCategoryName}">
+                        </option>
+                    </select>
+                </div>
+
+                <!-- 価格 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">価格</label>
+                    <input type="text" class="form-control input-update-price" th:field="*{price}" th:errorclass="is-invalid"/>
+                    <div class="invalid-feedback" th:errors="*{price}"></div>
+                </div>
+
+                <!-- サービスURL -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">サービスURL</label>
+                    <input type="text" class="form-control input-update-serviceurl" th:field="*{serviceURL}" th:errorclass="is-invalid"/>
+                    <div class="invalid-feedback" th:errors="*{serviceURL}"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <!-- 変更ボタン -->
+                        <!-- admin/goods/update へ post リクエストを submit するボタンを追加-->
+                        <button id="btn-update-goods-submit" type="submit" class="btn btn-primary w-100 mt-3">
+                            変更
+                        </button>
+                    </div>
+                    <div class="col">
+                        <!-- 戻るボタン -->
+                        <button id="btn-update-goods-cancel" type="button" class="btn btn-secondary w-100 mt-3">
+                            戻る
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>                
+
         <!-- 商品管理ページ -->
         <div>
             <!-- パンくずリスト -->
