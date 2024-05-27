@@ -62,7 +62,7 @@ function removeFromCart(form){
 
         }).done(function(result){
            alert('カートから削除しました');
-           window.location.href = '/cart/view';
+           window.location.href = '/store/cart/view';
 
     }).fail(function(jqXHR, textStatus, errorThrown){
         alert('カートからの削除に失敗しました');
