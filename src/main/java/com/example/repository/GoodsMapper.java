@@ -18,4 +18,6 @@ public interface GoodsMapper {
 	public MGoods findOne(int goodsId);
 
 	public void insertOne(MGoods goods);
+
+	public void updateOne(MGoods goods);
 }

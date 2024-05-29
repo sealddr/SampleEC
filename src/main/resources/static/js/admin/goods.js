@@ -42,6 +42,7 @@ updateButtons.forEach(function(button) {
             .then(response => response.json())
             .then(data => {
                 var updateForm = document.querySelector('.update-goods-form');
+                updateForm.querySelector('.input-update-goodsid').value = data.goodsId;
                 updateForm.querySelector('.input-update-goodsname').value = data.goodsName;
                 updateForm.querySelector('.textarea-update-goodsdescription').value = data.goodsDescription;
                 updateForm.querySelector('.input-update-price').value = data.price;

@@ -15,4 +15,6 @@ public interface GoodsService {
 	public MGoods getGoodsOne(int goodsId);
 
 	public void registerGoods(MGoods goods);
+
+	public void updateGoods(MGoods goods);
 }

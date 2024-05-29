@@ -55,4 +55,15 @@
 		values
 		(NEXTVAL('goods_seq'), #{goodsName}, #{goodsDescription}, #{price}, #{goodsCategoryId})
 	</insert>
+
+	<update id="updateOne">
+		update m_goods
+		set
+			goods_name = #{goodsName},
+			goods_description = #{goodsDescription},
+			price = #{price},
+			goods_category_id = #{goodsCategoryId}
+		where
+			goods_id = #{goodsId}
+	</update>
 </mapper>

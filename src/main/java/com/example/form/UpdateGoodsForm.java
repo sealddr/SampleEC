@@ -7,6 +7,9 @@ import lombok.Data;
 
 @Data
 public class UpdateGoodsForm {
+
+    private int goodsId;
+
     @NotBlank(groups = ValidGroup1.class)
     private String goodsName;
 

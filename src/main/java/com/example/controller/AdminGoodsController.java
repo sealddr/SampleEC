@@ -82,4 +82,20 @@ public class AdminGoodsController {
 		return "redirect:/admin/goods";
 	}
     
+	@PostMapping("/goods/update")
+	public String postAdminUpdateGoods(
+		@ModelAttribute SearchGoodsForm goodsSearchForm,
+		@ModelAttribute @Validated(GroupOrder.class) UpdateGoodsForm updateGoodsForm,
+		Model model) {
+		MGoods goods = new MGoods();
+
+		goods.setGoodsId(updateGoodsForm.getGoodsId());
+		goods.setGoodsName(updateGoodsForm.getGoodsName());
+		goods.setGoodsDescription(updateGoodsForm.getGoodsDescription());
+		goods.setGoodsCategoryId(updateGoodsForm.getGoodsCategoryId());
+		goods.setPrice(updateGoodsForm.getPrice());
+
+		goodsService.updateGoods(goods);
+		return "redirect:/admin/goods";
+	}
 }
