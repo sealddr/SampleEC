@@ -34,12 +34,20 @@ var updateButtons = document.querySelectorAll('.btn-update-goods');
 
 updateButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-        fetch('/api/goods/' + goodsId)
+
+        // goodsIdは自身の兄弟要素のinput要素のvalueを取得
+        var goodsId = this.previousElementSibling.value;
+
+        fetch('/api/admin/goods/search/' + goodsId)
             .then(response => response.json())
             .then(data => {
                 var updateForm = document.querySelector('.update-goods-form');
                 updateForm.querySelector('.input-update-goodsname').value = data.goodsName;
                 updateForm.querySelector('.textarea-update-goodsdescription').value = data.goodsDescription;
+                updateForm.querySelector('.input-update-price').value = data.price;
+
+                // "select-update-goodscategory"でgoodsCategoryIdに対応するオプションを選択
+                updateForm.querySelector('.select-update-goodscategory').value = data.goodsCategoryId;
         });
 
         var element = document.getElementById('update-goods-area');
