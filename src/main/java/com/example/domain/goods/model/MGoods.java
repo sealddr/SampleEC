@@ -9,6 +9,7 @@ public class MGoods {
 	private String goodsDescription;
 	private int goodsCategoryId;
 	private int price;
+	private String serviceURL;
 	private MGoodsCategory goodsCategory;
 	
 }

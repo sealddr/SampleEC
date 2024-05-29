@@ -77,6 +77,7 @@ public class AdminGoodsController {
 		goods.setGoodsDescription(registerGoodsForm.getGoodsDescription());
 		goods.setGoodsCategoryId(registerGoodsForm.getGoodsCategoryId());
 		goods.setPrice(registerGoodsForm.getPrice());
+		goods.setServiceURL(registerGoodsForm.getServiceURL());
 
 		goodsService.registerGoods(goods);
 		return "redirect:/admin/goods";

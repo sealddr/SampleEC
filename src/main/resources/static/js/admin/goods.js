@@ -46,6 +46,7 @@ updateButtons.forEach(function(button) {
                 updateForm.querySelector('.input-update-goodsname').value = data.goodsName;
                 updateForm.querySelector('.textarea-update-goodsdescription').value = data.goodsDescription;
                 updateForm.querySelector('.input-update-price').value = data.price;
+                updateForm.querySelector(".input-update-serviceurl").value = data.serviceURL;
 
                 // "select-update-goodscategory"でgoodsCategoryIdに対応するオプションを選択
                 updateForm.querySelector('.select-update-goodscategory').value = data.goodsCategoryId;

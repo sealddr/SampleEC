@@ -26,35 +26,40 @@ INSERT INTO m_goods (
     goods_name,
     goods_description,
     goods_category_id,
-    price
+    price,
+    service_url
 ) VALUES
 (
     NEXTVAL('goods_seq'),
     '必勝面接',
     '面接のポイントを実演を通じて説明します。',
     1,
-    100
+    100,
+    'hissyoumensetu'
 ),
 (
     NEXTVAL('goods_seq'),
     'はじめての日商簿記3級',
     '初学者向けに簿記の入門および日商簿記試験3級合格に必要な知識を解説します。',
     2,
-    200
+    200,
+    'nissyouboki3'
 ),
 (
     NEXTVAL('goods_seq'),
     'できるビジネスパーソンのプレゼンテーション',
     'ビジネスマンの必須スキルであるプレゼンテーション能力。資料作成から発表のノウハウを伝授します。',
     3,
-    400
+    400,
+    'presentation'
 ),
 (
     NEXTVAL('goods_seq'),
     '動画でわかるITパスポート試験',
     'IT系国家試験の入門であるITパスポート試験を動画で解説します。',
     2,
-    800
+    800,
+    'itpassport'
 );
 
 -- 職業の初期データ

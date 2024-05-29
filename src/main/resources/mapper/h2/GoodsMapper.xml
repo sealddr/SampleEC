@@ -13,6 +13,7 @@
 		<result column="goods_description" property="goodsDescription" />
 		<result column="price" property="price" />
 		<result column="goods_category_id" property="goodsCategoryId"/>
+		<result column="service_url" property="serviceURL"/>
 		<association property="goodsCategory" resultMap="goods_category"></association>
 	</resultMap>
 	
@@ -51,9 +52,9 @@
 
 	<insert id="insertOne">
 		insert into m_goods
-		(goods_id, goods_name, goods_description, price, goods_category_id)
+		(goods_id, goods_name, goods_description, price, goods_category_id, service_url)
 		values
-		(NEXTVAL('goods_seq'), #{goodsName}, #{goodsDescription}, #{price}, #{goodsCategoryId})
+		(NEXTVAL('goods_seq'), #{goodsName}, #{goodsDescription}, #{price}, #{goodsCategoryId}, #{serviceURL})
 	</insert>
 
 	<update id="updateOne">
@@ -62,7 +63,8 @@
 			goods_name = #{goodsName},
 			goods_description = #{goodsDescription},
 			price = #{price},
-			goods_category_id = #{goodsCategoryId}
+			goods_category_id = #{goodsCategoryId},
+			service_url = #{serviceURL}
 		where
 			goods_id = #{goodsId}
 	</update>

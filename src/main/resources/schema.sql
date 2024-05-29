@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS m_goods (
     goods_name VARCHAR(50),
     goods_description VARCHAR(200),
     goods_category_id INT,    
-    price INT
+    price INT,
+    service_url VARCHAR(200)
 );
 
 -- 商品カテゴリマスタ
