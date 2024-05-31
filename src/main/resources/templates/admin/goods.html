@@ -162,14 +162,14 @@
                 <!-- 教材名 -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">教材名</label>
-                    <input type="text" class="form-control input-delete-goodsname" th:field="*{goodsName}" th:errorclass="is-invalid" readonly />
+                    <input type="text" class="form-control input-delete-goodsname" th:field="*{goodsName}" th:errorclass="is-invalid" disabled />
                     <div class="invalid-feedback" th:errors="*{goodsName}"></div>
                 </div>
 
                 <!-- 説明 -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">説明</label>
-                    <textarea class="form-control textarea-delete-goodsdescription" th:field="*{goodsDescription}" th:errorclass="is-invalid" readonly></textarea>
+                    <textarea class="form-control textarea-delete-goodsdescription" th:field="*{goodsDescription}" th:errorclass="is-invalid" disabled ></textarea>
                     <div class="invalid-feedback" th:errors="*{goodsDescription}"></div>
                 </div>
 
@@ -188,14 +188,14 @@
                 <!-- 価格 -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">価格</label>
-                    <input type="text" class="form-control input-delete-price" th:field="*{price}" th:errorclass="is-invalid" readonly />
+                    <input type="text" class="form-control input-delete-price" th:field="*{price}" th:errorclass="is-invalid" disabled />
                     <div class="invalid-feedback" th:errors="*{price}"></div>
                 </div>
 
                 <!-- サービスURL -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">サービスURL</label>
-                    <input type="text" class="form-control input-delete-serviceurl" th:field="*{serviceURL}" th:errorclass="is-invalid" readonly />
+                    <input type="text" class="form-control input-delete-serviceurl" th:field="*{serviceURL}" th:errorclass="is-invalid" disabled />
                     <div class="invalid-feedback" th:errors="*{serviceURL}"></div>
                 </div>
 
