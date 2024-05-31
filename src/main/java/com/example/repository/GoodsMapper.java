@@ -20,4 +20,6 @@ public interface GoodsMapper {
 	public void insertOne(MGoods goods);
 
 	public void updateOne(MGoods goods);
+
+	public void deleteOne(int goodsId);
 }

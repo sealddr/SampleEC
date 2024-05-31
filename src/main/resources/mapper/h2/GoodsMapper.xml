@@ -68,4 +68,10 @@
 		where
 			goods_id = #{goodsId}
 	</update>
+
+	<delete id="deleteOne">
+		delete from m_goods
+		where
+			goods_id = #{goodsId}
+	</delete>
 </mapper>

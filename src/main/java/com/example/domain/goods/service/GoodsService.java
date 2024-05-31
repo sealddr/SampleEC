@@ -17,4 +17,6 @@ public interface GoodsService {
 	public void registerGoods(MGoods goods);
 
 	public void updateGoods(MGoods goods);
+
+	public void deleteGoods(int goodsId);
 }

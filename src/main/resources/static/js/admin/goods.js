@@ -82,3 +82,57 @@ updateCancelButton.addEventListener('click', function() {
     document.body.style.overflow = 'auto';
 
 });
+
+
+var deleteButtons = document.querySelectorAll('.btn-delete-goods');
+
+deleteButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+
+        // goodsIdは自身の兄弟要素のinput要素のvalueを取得
+        var goodsId = this.previousElementSibling.value;
+
+        fetch('/api/admin/goods/search/' + goodsId)
+            .then(response => response.json())
+            .then(data => {
+                var updateForm = document.querySelector('.delete-goods-form');
+                updateForm.querySelector('.input-delete-goodsid').value = data.goodsId;
+                updateForm.querySelector('.input-delete-goodsname').value = data.goodsName;
+                updateForm.querySelector('.textarea-delete-goodsdescription').value = data.goodsDescription;
+                updateForm.querySelector('.input-delete-price').value = data.price;
+                updateForm.querySelector(".input-delete-serviceurl").value = data.serviceURL;
+
+                // "select-update-goodscategory"でgoodsCategoryIdに対応するオプションを選択
+                updateForm.querySelector('.select-delete-goodscategory').value = data.goodsCategoryId;
+        });
+
+        var element = document.getElementById('delete-goods-area');
+        element.style.display = 'block';
+
+        // bodyのスクロールを無効にする
+        document.body.style.overflow = 'hidden';
+        
+    });
+});
+
+var deleteSubmitButton = document.getElementById('btn-delete-goods-submit');
+
+deleteSubmitButton.addEventListener('click', function() {
+    var element = document.getElementById('delete-goods-area');
+    element.style.display = 'none';
+
+    // bodyのスクロールを有効にする
+    document.body.style.overflow = 'auto';
+
+});
+
+var deleteCancelButton = document.getElementById('btn-delete-goods-cancel');
+
+deleteCancelButton.addEventListener('click', function() {
+    var element = document.getElementById('delete-goods-area');
+    element.style.display = 'none';
+
+    // bodyのスクロールを有効にする
+    document.body.style.overflow = 'auto';
+
+});

@@ -41,4 +41,9 @@ public class GoodsServiceImpl implements GoodsService{
 	public void updateGoods(MGoods goods) {
 		mapper.updateOne(goods);
 	}
+
+	@Override
+	public void deleteGoods(int goodsId) {
+		mapper.deleteOne(goodsId);
+	}
 }

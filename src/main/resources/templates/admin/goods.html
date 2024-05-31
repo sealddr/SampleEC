@@ -59,7 +59,7 @@
                 <!-- サービスURL -->
                 <div class="mb-2">
                     <label for="userId" class="form-label">サービスURL</label>
-                    <input type="text" class="form-control" th:field="*{serviceURL}" th:errorclass="is-invalid"/>
+                    <input type="text" class="form-control" th:field="*{serviceURL}" th:errorclass="is-invalid" />
                     <div class="invalid-feedback" th:errors="*{serviceURL}"></div>
                 </div>    
 
@@ -147,7 +147,75 @@
                     </div>
                 </div>
             </form>
-        </div>                
+        </div>
+
+        <!-- 商品削除モーダルダイアログ -->
+        <div id="delete-goods-area" class="delete-goods-area">
+            <form class="delete-goods-form" method="post" th:action="@{/admin/goods/delete}"
+            th:object="${deleteGoodsForm}">
+            
+                <h1 class="text-center">商品削除</h1>
+
+                <!-- 商品ID -->
+                <input type="hidden" class="input-delete-goodsid" th:field="*{goodsId}" />
+
+                <!-- 教材名 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">教材名</label>
+                    <input type="text" class="form-control input-delete-goodsname" th:field="*{goodsName}" th:errorclass="is-invalid" readonly />
+                    <div class="invalid-feedback" th:errors="*{goodsName}"></div>
+                </div>
+
+                <!-- 説明 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">説明</label>
+                    <textarea class="form-control textarea-delete-goodsdescription" th:field="*{goodsDescription}" th:errorclass="is-invalid" readonly></textarea>
+                    <div class="invalid-feedback" th:errors="*{goodsDescription}"></div>
+                </div>
+
+                <!-- 教材カテゴリ -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">教材カテゴリ</label>
+                    <select class="form-select select-delete-goodscategory" th:field="*{goodsCategoryId}" disabled>
+                        <option
+                            th:each="goodsCategories : ${goodsCategoryList}"
+                            th:value="${goodsCategories.goodsCategoryId}"
+                            th:text="${goodsCategories.goodsCategoryName}">
+                        </option>
+                    </select>
+                </div>
+
+                <!-- 価格 -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">価格</label>
+                    <input type="text" class="form-control input-delete-price" th:field="*{price}" th:errorclass="is-invalid" readonly />
+                    <div class="invalid-feedback" th:errors="*{price}"></div>
+                </div>
+
+                <!-- サービスURL -->
+                <div class="mb-2">
+                    <label for="userId" class="form-label">サービスURL</label>
+                    <input type="text" class="form-control input-delete-serviceurl" th:field="*{serviceURL}" th:errorclass="is-invalid" readonly />
+                    <div class="invalid-feedback" th:errors="*{serviceURL}"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <!-- 削除ボタン -->
+                        <!-- admin/goods/delete へ post リクエストを submit するボタンを追加-->
+                        <button id="btn-delete-goods-submit" type="submit" class="btn btn-primary w-100 mt-3">
+                            削除
+                        </button>
+                    </div>
+                    <div class="col">
+                        <!-- 戻るボタン -->
+                        <button id="btn-delete-goods-cancel" type="button" class="btn btn-secondary w-100 mt-3">
+                            戻る
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
         <!-- 商品管理ページ -->
         <div>

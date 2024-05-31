@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.conversion.DbAction.Delete;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -15,6 +16,7 @@ import com.example.domain.goods.model.MGoods;
 import com.example.domain.goods.model.MGoodsCategory;
 import com.example.domain.goods.model.MGoodsSearchKeys;
 import com.example.domain.goods.service.GoodsService;
+import com.example.form.DeleteGoodsForm;
 import com.example.form.GroupOrder;
 import com.example.form.RegisterGoodsForm;
 import com.example.form.SearchGoodsForm;
@@ -40,6 +42,7 @@ public class AdminGoodsController {
 		@ModelAttribute SearchGoodsForm goodsSearchForm,
 		@ModelAttribute RegisterGoodsForm registerGoodsForm,
 		@ModelAttribute UpdateGoodsForm updateGoodsForm,
+		@ModelAttribute DeleteGoodsForm deleteGoodsForm,
 		Model model) {
 
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
@@ -99,4 +102,14 @@ public class AdminGoodsController {
 		goodsService.updateGoods(goods);
 		return "redirect:/admin/goods";
 	}
+
+	@PostMapping("/goods/delete")
+	public String postAdminDeleteGoods(
+		@ModelAttribute SearchGoodsForm goodsSearchForm,
+		@ModelAttribute DeleteGoodsForm deleteGoodsForm,
+		Model model) {
+		goodsService.deleteGoods(deleteGoodsForm.getGoodsId());
+		return "redirect:/admin/goods";
+	}
+	
 }
