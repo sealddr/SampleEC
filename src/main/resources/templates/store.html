@@ -6,6 +6,7 @@
 <head>
     <meta name="_csrf" th:content="${_csrf.token}"/>
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <link th:href="@{/css/store.css}" rel="stylesheet">
     <script th:src="@{/js/store.js}" defer></script>
     <script th:src="@{/js/store/cart.js}" defer></script>
     <title>ストア - デジタル教材.com</title>
@@ -14,9 +15,11 @@
 <body>
     <div layout:fragment="content">
         <div class="container">
-            <div class="my-2 text-end">
-                    <a th:href="@{/store/cart/view}" button class="btn btn-outline-dark button" type="button">カートの中を見る</a>
+            <!-- ユーザーがログイン状態の場合に「カートの中身を見る」ボタンを追加-->
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/store/cart}" class="btn btn-outline-dark btn-show-cart" type="button">カートの中を見る</a>
             </div>
+
         </div>
 
         <div class="container">
@@ -60,7 +63,7 @@
                         <td th:text="${goods.goodsCategory.goodsCategoryName}"></td>
                         <td th:text="|\ ${goods.price}|"></td>
                         <td>
-                            <form class="form-add-to-cart">
+                            <form class="form-add-to-cart" sec:authorize="isAuthenticated()">
                                 <input name="goodsId" th:value="${goods.goodsId}" type="hidden">
                                 <button class="btn btn-primary btn-add-to-cart" type="submit">カートに追加する</button>
                             </form>

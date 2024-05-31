@@ -16,8 +16,8 @@ import com.example.domain.login.model.LoginTransitionSource;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/store/cart/view")
-public class ViewCartController {
+@RequestMapping("/store/cart")
+public class CartController {
 	
 	@Autowired
 	private HttpSession session;
@@ -32,7 +32,7 @@ public class ViewCartController {
 		}
 		model.addAttribute("cart", cart);
 		
-		return "store/cart/view";
+		return "store/cart";
 	}
 	
 	@PostMapping("/loginInstraction")
