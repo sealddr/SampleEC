@@ -44,7 +44,7 @@ public class StoreController {
 		List<MGoods> goodsList = goodsService.getGoods(searchKeys);
 		model.addAttribute("goodsList", goodsList);
 		
-		return "store/home";
+		return "store";
 	}
 	
 	private void initializeSession() {
@@ -72,7 +72,7 @@ public class StoreController {
 		List<MGoods> goodsList = goodsService.getGoods(searchKeys);
 		model.addAttribute("goodsList", goodsList);
 		
-		return "store/home";
+		return "store";
 		
 	}
 }
