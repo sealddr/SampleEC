@@ -16,8 +16,8 @@
     <div layout:fragment="content">
         <div class="container">
             <!-- ユーザーがログイン状態の場合に「カートの中身を見る」ボタンを追加-->
-            <div sec:authorize="isAuthenticated()">
-                <a th:href="@{/store/cart}" class="btn btn-outline-dark btn-show-cart" type="button">カートの中を見る</a>
+            <div class="show-cart" sec:authorize="isAuthenticated()">
+                <a th:href="@{/store/cart}" class="btn btn-primary btn-show-cart" type="button">カートの中を見る</a>
             </div>
 
         </div>
