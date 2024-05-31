@@ -1,0 +1,8 @@
+.payselect-cancel {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-payselect-cancel {
+    margin-right: 10px;
+}

@@ -4,6 +4,7 @@
     layout:decorate="~{layout/layout}">
 
     <head>
+        <link th:href="@{/css/payselect.css}" rel="stylesheet">
         <title>お支払方法選択</title>
     </head>
     <body>
@@ -31,6 +32,16 @@
                     </tr>
                 </tbody>
             </table>
+
+            <!-- カート内容表示に戻るボタンを追加 -->
+            <div class="container">
+                <nav class="my-2">
+                    <div class="payselect-cancel">
+                        <a th:href="@{/store/cart}" class="btn btn-secondary btn-payselect-cancel" type="button">カート内容表示に戻る</a>
+                    </div>
+                </nav>
+            </div>
+            
             <h2>支払方法の選択</h2>
             ご希望の支払い方法を選択してください。
             <div class="d-flex flex-wrap bd-highlight mb-3">
