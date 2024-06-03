@@ -33,7 +33,7 @@
             </table>
             <h2>デモ用支払い</h2>
             デモ用支払いにより商品を購入する。
-            <form action="/store/demopay/confirm" method="post">
+            <form action="/store/confirm/demopay" method="post">
                 <input type="submit" value="デモ用支払いを実行(キャンセルできません)" class="btn btn-primary">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             </form>

@@ -122,7 +122,7 @@ INSERT INTO m_payment_method (
 ) VALUES (
     0,
     'デモ用決済',
-    '/store/demopay/confirm'
+    'demopay'
 ),
 (
     1,

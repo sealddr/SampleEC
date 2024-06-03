@@ -10,27 +10,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/store/demopay")
+@RequestMapping("/store/confirm")
 public class DemoPayConfirmController {
 	
     @Autowired
 	private HttpSession session;
     
-   	@GetMapping("/confirm")
+   	@GetMapping("/demopay")
 	public String getPaySelect(Model model) {
 		model.addAttribute("cart", session.getAttribute("cart"));
-		return "store/demopay/confirm";
+		return "store/confirm/demopay";
 	}
 
-    @PostMapping("/confirm")
+    @PostMapping("/demopay")
     public String postPaySelect(Model model) {
-        //TODO 売上トランザクションデータを発行し、データベースに登録する
-        
-        //TODO ユーザーの所有商品データを更新する
-
         //カートの中身を削除する
 		model.addAttribute("cart", session.getAttribute("cart"));
         session.removeAttribute("cart");
-        return "store/demopay/result";
+        return "store/result/demopay";
     }
 }
