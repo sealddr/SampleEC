@@ -46,5 +46,17 @@ CREATE TABLE IF NOT EXISTS m_payment_method (
     destination_page VARCHAR(50)
 );
 
+-- 商品購入履歴
+CREATE TABLE IF NOT EXISTS t_goods_purchase_history (
+    purchase_history_id INT PRIMARY KEY,
+    goods_id INT,
+    user_id INT,
+    purchase_date DATE,
+    payment_method_id INT,
+    FOREIGN KEY (goods_id) REFERENCES m_goods(goods_id),
+    FOREIGN KEY (user_id) REFERENCES m_user(user_id),
+    FOREIGN KEY (payment_method_id) REFERENCES m_payment_method(payment_method_id)
+);
+
 ALTER TABLE m_goods ADD FOREIGN KEY (goods_category_id) REFERENCES m_goods_category(goods_category_id);
 ALTER TABLE m_user ADD FOREIGN KEY (occupation_id) REFERENCES m_occupation(occupation_id);

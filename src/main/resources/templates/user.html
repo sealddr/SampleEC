@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<head>
+    <title>ユーザー</title>
+</head>
+
+<body>
+    <div>
+        <!-- パンくずリスト -->
+        <ol class="breadcrumb">
+            <li class="active">ユーザートップ</li>
+        </ol>
+    </div>
+
+    <div layout:fragment="content">
+        <div class="container">
+            <h1>ユーザートップ</h1>
+            <div>
+                <h2>購入商品一覧</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>商品名</th>
+                            <th>価格</th>
+                            <th>購入日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="goods : ${goodsList}">
+                            <td th:text="${goods.name}"></td>
+                            <td th:text="${goods.price}"></td>
+                            <td th:text="${goods.purchaseDate}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/admin/goods" class="btn btn-primary btn-lg btn-block">ユーザーアカウント管理</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
