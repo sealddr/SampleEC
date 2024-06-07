@@ -16,11 +16,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.domain.cart.model.MCart;
 import com.example.domain.goods.model.MGoods;
 import com.example.domain.login.model.LoginTransitionSource;
+import com.example.domain.user.model.MUser;
+import com.example.domain.user.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
+
+	@Autowired
+	private UserService userService;
 
 	@Autowired
 	private HttpSession session;
@@ -36,6 +41,12 @@ public class LoginController {
 
 		LoginTransitionSource loginTransitionSource = (LoginTransitionSource) session.getAttribute("loginTransitionSource");	
 		session.setAttribute("loginTransitionSource", LoginTransitionSource.INVALID);
+
+		// ログインユーザー名からログインユーザー情報を取得
+		MUser loginUser = userService.getLoginUser(principal.getName());
+
+		// ログインユーザー情報をセッションに保存
+		session.setAttribute("loginUser", loginUser);
 
     	// ユーザーのロールを取得
     	Collection<? extends GrantedAuthority> authorities = ((UserDetails) ((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getAuthorities();
