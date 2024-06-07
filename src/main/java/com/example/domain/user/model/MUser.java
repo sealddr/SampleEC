@@ -6,7 +6,8 @@ import lombok.Data;
 
 @Data
 public class MUser {
-	private String userId;
+	private int userId;
+	private String mailAddress;
 	private String password;
 	private String userName;
 	private String furigana;

@@ -86,6 +86,7 @@ INSERT INTO m_occupation (
 -- ユーザーの初期データ
 INSERT INTO m_user (
     user_id,
+    mail_address,
     password,
     user_name,
     furigana,
@@ -94,6 +95,7 @@ INSERT INTO m_user (
     occupation_id,
     role
 ) VALUES (
+    NEXTVAL('user_seq'),
     'user@co.jp',
     '$2a$10$KWNeC5deiOeM4GZ2nxQzeekyFqeGz/hmQ1lk3WDq.793taFtcdzXq',
     '教材太郎',
@@ -104,6 +106,7 @@ INSERT INTO m_user (
     'ROLE_GENERAL'
 ),
 (
+    NEXTVAL('user_seq'),
     'system@co.jp',
     '$2a$10$KWNeC5deiOeM4GZ2nxQzeekyFqeGz/hmQ1lk3WDq.793taFtcdzXq',
     'システム管理者',

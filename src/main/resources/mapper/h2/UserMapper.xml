@@ -8,6 +8,7 @@
 	<insert id="insertOne">
 		insert into m_user(
 			user_id,
+			mail_address,
 			password,
 			user_name,
 			furigana,
@@ -17,7 +18,8 @@
 			role
 		)
 		values(
-			#{userId},
+			NEXTVAL('user_seq'),
+			#{mailAddress},
 			#{password},
 			#{userName},
 			#{furigana},
@@ -35,6 +37,6 @@
 		from
 		  m_user
 		where
-		  user_id = #{userId}
+		  mail_address = #{mailAddress}
 	</select>
 </mapper>

@@ -19,11 +19,11 @@
         <form id="signup-form" method="post" action="/signup" class="form-signup" th:object="${signupForm}">
             <h1 class="h2 text-center">アカウント新規作成</h1>
 
-            <!-- ユーザーID(メールアドレス) -->
+            <!-- メールアドレス -->
             <div class="mb-2">
-                <label for="userId" class="form-label" th:text="#{signup.userId}"></label>
-                <input type="text" class="form-control" th:field="*{userId}" th:errorclass="is-invalid" />
-                <div class="invalid-feedback" th:errors="*{userId}"></div>            
+                <label for="userId" class="form-label" th:text="#{signup.mailAddress}"></label>
+                <input type="text" class="form-control" th:field="*{mailAddress}" th:errorclass="is-invalid" />
+                <div class="invalid-feedback" th:errors="*{mailAddress}"></div>            
             </div>
 
             <!-- パスワード -->

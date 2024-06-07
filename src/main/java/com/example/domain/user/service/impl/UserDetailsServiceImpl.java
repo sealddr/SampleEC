@@ -32,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(authority);
 
-        UserDetails userDetails = (UserDetails)new User(loginUser.getUserId(), loginUser.getPassword(), authorities);
+        UserDetails userDetails = (UserDetails)new User(loginUser.getMailAddress(), loginUser.getPassword(), authorities);
         return userDetails;
 
 

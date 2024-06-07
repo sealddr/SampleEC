@@ -1,6 +1,9 @@
 -- 商品マスタのPKのためのシーケンス
 CREATE SEQUENCE IF NOT EXISTS goods_seq;
 
+-- ユーザーのPKのためのシーケンス
+CREATE SEQUENCE IF NOT EXISTS user_seq;
+
 -- 商品マスタ
 CREATE TABLE IF NOT EXISTS m_goods (
     goods_id INT PRIMARY KEY,
@@ -19,7 +22,8 @@ CREATE TABLE IF NOT EXISTS m_goods_category (
 
 -- ユーザー
 CREATE TABLE IF NOT EXISTS m_user (
-    user_id VARCHAR(50) PRIMARY KEY,
+    user_id INT PRIMARY KEY,
+    mail_address VARCHAR(100),
     password VARCHAR(100),
     user_name VARCHAR(50),
     furigana VARCHAR(50),

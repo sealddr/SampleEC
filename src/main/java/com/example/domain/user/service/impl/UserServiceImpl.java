@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public MUser getLoginUser(String userId){
-		return mapper.findLoginUser(userId);
+	public MUser getLoginUser(String mailAddress) {
+		return mapper.findLoginUser(mailAddress);
 	}
 
 }

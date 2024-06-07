@@ -45,21 +45,26 @@ public class LoginController {
         	return "redirect:/admin";
     	}
 
-		// カートに遷移する場合
-		if(loginTransitionSource.equals(LoginTransitionSource.POST_STORE_CART_VIEW)){
-			MCart cart = (MCart) session.getAttribute("cart");
-			if(null == cart) {
-				cart = new MCart();
-				cart.setCartItems(new ArrayList<MGoods>());
-				cart.setSumPrice(0);
+		// ロールが"ROLE_USER"の場合
+		if (authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))) {
+
+			// カートに遷移する場合
+			if(loginTransitionSource.equals(LoginTransitionSource.POST_STORE_CART_VIEW)){
+				MCart cart = (MCart) session.getAttribute("cart");
+				if(null == cart) {
+					cart = new MCart();
+					cart.setCartItems(new ArrayList<MGoods>());
+					cart.setSumPrice(0);
+				}
+				model.addAttribute("cart", cart);
+				return "redirect:/store/cart";
 			}
-			model.addAttribute("cart", cart);
-			return "redirect:/store/cart/view";
+			// ユーザー画面に遷移する場合
+			return "redirect:/user";
+		}
 
-		}		
-
-		// ホームに遷移する場合
-		return "redirect:/";
+		// デフォルトのユーザー画面に遷移する場合
+		return "redirect:/user";
 
 	}
 }
