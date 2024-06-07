@@ -11,5 +11,5 @@ public interface UserService {
 
 	public void signUp(MUser user);
 
-	public MUser getLoginUser(String userId);
+	public MUser getLoginUser(String mailAddress);
 }

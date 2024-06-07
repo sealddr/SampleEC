@@ -14,5 +14,5 @@ public interface UserMapper {
 	
 	public int insertOne(MUser user);
 
-	public MUser findLoginUser(String userId);
+	public MUser findLoginUser(String mailAddress);
 }
