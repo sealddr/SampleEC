@@ -35,5 +35,21 @@
                     user_id = #{userId}
             )
     </select>
+
+    <insert id="insertGoodsPurchaseHistory">
+        insert into t_goods_purchase_history (
+            goods_purchase_history_id,
+            user_id,
+            goods_id,
+            purchase_date,
+            payment_method_id
+        ) values (
+            nextval('goods_purchase_history_seq'),
+            #{userId},
+            #{goodsId},
+            current_timestamp,
+            #{paymentMethodId}
+        )
+    </insert>
     
 </mapper>

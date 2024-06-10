@@ -4,6 +4,9 @@ CREATE SEQUENCE IF NOT EXISTS goods_seq;
 -- ユーザーのPKのためのシーケンス
 CREATE SEQUENCE IF NOT EXISTS user_seq;
 
+-- 商品購入履歴のPKのためのシーケンス
+CREATE SEQUENCE IF NOT EXISTS goods_purchase_history_seq;
+
 -- 商品マスタ
 CREATE TABLE IF NOT EXISTS m_goods (
     goods_id INT PRIMARY KEY,
@@ -42,13 +45,12 @@ CREATE TABLE IF NOT EXISTS m_occupation (
 -- 支払方法マスタ
 CREATE TABLE IF NOT EXISTS m_payment_method (
     payment_method_id INT PRIMARY KEY,
-    payment_method_name VARCHAR(50),
-    destination_page VARCHAR(50)
+    payment_method_name VARCHAR(50)
 );
 
 -- 商品購入履歴
 CREATE TABLE IF NOT EXISTS t_goods_purchase_history (
-    purchase_history_id INT PRIMARY KEY,
+    goods_purchase_history_id INT PRIMARY KEY,
     goods_id INT,
     user_id INT,
     purchase_date DATE,

@@ -10,4 +10,6 @@ import com.example.domain.goods.model.MGoods;
 public interface GoodsPurchaseHistoryMapper {
     public List<MGoods> findPurchasedGoodsListByUserId(int userId);
 
+    public void insertGoodsPurchaseHistory(int userId, int goodsId, int paymentMethodId);
+
 }

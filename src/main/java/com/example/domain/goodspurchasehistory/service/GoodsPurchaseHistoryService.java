@@ -8,4 +8,6 @@ public interface GoodsPurchaseHistoryService {
 
     public List<MGoods> getPurchasedGoodsListByUserId(int userId);
 
+    public void registerGoodsPurchaseHistory(int userId, List<MGoods> items, int paymentMethodId);
+
 }

@@ -44,18 +44,12 @@
             
             <h2>支払方法の選択</h2>
             ご希望の支払い方法を選択してください。
-            <div class="d-flex flex-wrap bd-highlight mb-3">
-                <div th:each=" paymentMethod: ${paymentMethodList}">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <div th:if="${paymentMethod.destinationPage != null}">
-                                <a th:href="@{'/store/confirm/' + ${paymentMethod.destinationPage}}" th:text="${paymentMethod.paymentMethodName}" class="card-title h5"></a>
-                            </div>
-                            <div th:unless="${paymentMethod.destinationPage != null}">
-                                <span th:text="${paymentMethod.paymentMethodName}" class="card-title h5"></span>
-                            </div>
-                        </div>
-                    </div>
+            <div id="paymentMethodList">
+                <div th:each="paymentMethod: ${paymentMethodList}">
+                    <form th:action="@{/store/payselect}" method="post" th:object="${paySelectForm}">
+                        <input type="hidden" name="paymentMethod" th:value="${paymentMethodId}" />
+                        <button type="submit" class="btn btn-outline-primary btn-payselect" th:text="${paymentMethod.paymentMethodName}"></button>
+                    </form>
                 </div>
             </div>
         </div>

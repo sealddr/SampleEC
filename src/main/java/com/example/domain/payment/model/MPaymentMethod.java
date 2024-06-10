@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class MPaymentMethod {
-    private int paymentMethodId;
+    private String paymentMethodId;
     private String paymentMethodName;
-    private String destinationPage;
+
 }
