@@ -22,12 +22,12 @@
                 <h2>購入商品一覧</h2>
 
                 <!-- 購入商品が0県の場合 -->
-                <div th:if="${goodsList.size() == 0}">
+                <div th:if="${purchasedGoodsList.size() == 0}">
                     <p>購入商品はありません。</p>
                 </div>
 
                 <!-- 購入商品が1件以上の場合 -->
-                <div th:if="${goodsList.size() > 0}">
+                <div th:if="${purchasedGoodsList.size() > 0}">
                     <p>購入商品は以下の通りです。</p>
 
                     <table class="table">
@@ -39,7 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="goods : ${goodsList}">
+                            <tr th:each="goods : ${purchasedGoodsList}">
                                 <td th:text="${goods.name}"></td>
                                 <td th:text="${goods.price}"></td>
                                 <td th:text="${goods.purchaseDate}"></td>
