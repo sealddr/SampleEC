@@ -1,9 +1,9 @@
-package com.example.domain.purchasehistory.model;
+package com.example.domain.goodspurchasehistory.model;
 
 import lombok.Data;
 
 @Data
-public class MPurchaseHistory {
+public class TGoodsPurchaseHistory {
     private int purchaseHistoryId;
     private int userId;
     private int goodsId;
