@@ -18,7 +18,7 @@
 		<result column="goods_category_name" property="goodsCategoryName"/>
 	</resultMap>
 
-    <select id="findPurchasedGoodsListByUserId" resultType="goods">
+    <select id="findPurchasedGoodsListByUserId" resultMap="goods">
         select
             *
          from
