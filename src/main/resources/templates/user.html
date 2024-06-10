@@ -35,14 +35,12 @@
                             <tr>
                                 <th>商品名</th>
                                 <th>価格</th>
-                                <th>購入日</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="goods : ${purchasedGoodsList}">
-                                <td th:text="${goods.name}"></td>
+                                <td th:text="${goods.goodsName}"></td>
                                 <td th:text="${goods.price}"></td>
-                                <td th:text="${goods.purchaseDate}"></td>
                             </tr>
                         </tbody>
                     </table>
