@@ -20,22 +20,33 @@
             <h1>ユーザートップ</h1>
             <div>
                 <h2>購入商品一覧</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>商品名</th>
-                            <th>価格</th>
-                            <th>購入日</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="goods : ${goodsList}">
-                            <td th:text="${goods.name}"></td>
-                            <td th:text="${goods.price}"></td>
-                            <td th:text="${goods.purchaseDate}"></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <!-- 購入商品が0県の場合 -->
+                <div th:if="${goodsList.size() == 0}">
+                    <p>購入商品はありません。</p>
+                </div>
+
+                <!-- 購入商品が1件以上の場合 -->
+                <div th:if="${goodsList.size() > 0}">
+                    <p>購入商品は以下の通りです。</p>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>商品名</th>
+                                <th>価格</th>
+                                <th>購入日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="goods : ${goodsList}">
+                                <td th:text="${goods.name}"></td>
+                                <td th:text="${goods.price}"></td>
+                                <td th:text="${goods.purchaseDate}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>            
             <div class="row">
                 <div class="col-md-4">
