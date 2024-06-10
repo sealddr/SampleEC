@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.goods.model.MGoods;
 import com.example.domain.purchasehistory.service.PurchaseHistoryService;
-import com.example.repository.PurchaseHistoryMapper;
+import com.example.repository.GoodsPurchaseHistoryMapper;
 
 @Service
 public class PurchaseHistoryServiceImpl implements PurchaseHistoryService{
 
     @Autowired
-    private PurchaseHistoryMapper mapper;
+    private GoodsPurchaseHistoryMapper mapper;
 
     @Override
     public List<MGoods> getPurchasedGoodsListByUserId(int userId) {

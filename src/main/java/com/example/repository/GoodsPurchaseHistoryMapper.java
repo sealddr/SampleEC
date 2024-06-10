@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.example.domain.goods.model.MGoods;
 
 @Mapper
-public interface PurchaseHistoryMapper {
+public interface GoodsPurchaseHistoryMapper {
     public List<MGoods> findPurchasedGoodsListByUserId(int userId);
 
 }
