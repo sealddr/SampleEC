@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.exception.GoodsPurchaseException;
 import com.example.domain.goods.model.MGoods;
+import com.example.domain.goodspurchasehistory.model.MOwnedGoods;
 import com.example.domain.goodspurchasehistory.service.GoodsPurchaseHistoryService;
 import com.example.repository.GoodsPurchaseHistoryMapper;
 
@@ -17,7 +18,7 @@ public class GoodsPurchaseHistoryServiceImpl implements GoodsPurchaseHistoryServ
     private GoodsPurchaseHistoryMapper mapper;
 
     @Override
-    public List<MGoods> getPurchasedGoodsListByUserId(int userId) {
+    public List<MOwnedGoods> getPurchasedGoodsListByUserId(int userId) {
         return mapper.findPurchasedGoodsListByUserId(userId);
     }
 

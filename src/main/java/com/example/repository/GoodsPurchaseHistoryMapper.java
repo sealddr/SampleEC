@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.domain.goods.model.MGoods;
+import com.example.domain.goodspurchasehistory.model.MOwnedGoods;
 
 @Mapper
 public interface GoodsPurchaseHistoryMapper {
-    public List<MGoods> findPurchasedGoodsListByUserId(int userId);
+    public List<MOwnedGoods> findPurchasedGoodsListByUserId(int userId);
 
     public void insertGoodsPurchaseHistory(int userId, int goodsId, int paymentMethodId);
 

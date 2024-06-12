@@ -3,37 +3,43 @@
 
 <mapper namespace="com.example.repository.GoodsPurchaseHistoryMapper">
 
-	<resultMap id="goods" type="com.example.domain.goods.model.MGoods">
-		<id column="goods_id" property="goodsId" />
+	<resultMap id="owned_goods" type="com.example.domain.goods.model.MOwnedGoods">
+        <id column="goods_purchase_history_id" property="goodsPurchaseHistoryId" />
+        <result column="user_id" property="userId" />
+		<result column="goods_id" property="goodsId" />
 		<result column="goods_name" property="goodsName" />
 		<result column="goods_description" property="goodsDescription" />
 		<result column="price" property="price" />
-		<result column="goods_category_id" property="goodsCategoryId"/>
 		<result column="service_url" property="serviceURL"/>
+        <result column="purchase_date" property="purchaseDate" />
 		<association property="goodsCategory" resultMap="goods_category"></association>
-	</resultMap>
+    </resultMap>
 	
 	<resultMap id="goods_category" type="com.example.domain.goods.model.MGoodsCategory">
 		<id column="goods_category_id" property="goodsCategoryId" />
 		<result column="goods_category_name" property="goodsCategoryName"/>
 	</resultMap>
 
-    <select id="findPurchasedGoodsListByUserId" resultMap="goods">
+    <select id="findPurchasedGoodsListByUserId" resultMap="owned_goods">
         select
-            *
-         from
-            m_goods
-            left join m_goods_category
-            	on m_goods.goods_category_id = m_goods_category.goods_category_id
-         where
-            goods_id in (
-                select
-                    goods_id
-                from
-                    t_goods_purchase_history
-                where
-                    user_id = #{userId}
-            )
+            gph.goods_purchase_history_id,
+            gph.user_id,
+            gph.goods_id,
+            g.goods_name,
+            g.goods_description,
+            g.price,
+            g.service_url,
+            gph.purchase_date,
+            gc.goods_category_id,
+            gc.goods_category_name
+        from
+            t_goods_purchase_history gph
+            inner join t_goods g on gph.goods_id = g.goods_id
+            inner join t_goods_category gc on g.goods_category_id = gc.goods_category_id
+        where
+            gph.user_id = #{userId}
+        order by
+            gph.purchase_date desc
     </select>
 
     <insert id="insertGoodsPurchaseHistory">

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.domain.goods.model.MGoods;
+import com.example.domain.goodspurchasehistory.model.MOwnedGoods;
 import com.example.domain.goodspurchasehistory.service.GoodsPurchaseHistoryService;
 import com.example.domain.user.model.MUser;
 
@@ -29,9 +29,9 @@ public class UserController {
         MUser loginUser = (MUser) session.getAttribute("loginUser");
         
         // ログインユーザーが購入した商品一覧を取得
-        List<MGoods> purchasedGoodsList = goodsPurchaseHistoryService.getPurchasedGoodsListByUserId(loginUser.getUserId());
+        List<MOwnedGoods> ownedGoodsList = goodsPurchaseHistoryService.getPurchasedGoodsListByUserId(loginUser.getUserId());
 
-        model.addAttribute("purchasedGoodsList", purchasedGoodsList);
+        model.addAttribute("ownedGoodsList", ownedGoodsList);
         return "user";
     }
 
