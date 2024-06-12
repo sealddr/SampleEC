@@ -11,7 +11,7 @@ public class MOwnedGoods {
     private int goodsPurchaseHistoryId;
     private int userId;
     private int goodsId;
-    private int goodsName;
+    private String goodsName;
 	private String goodsDescription;
     private int price;
 	private String serviceURL;
