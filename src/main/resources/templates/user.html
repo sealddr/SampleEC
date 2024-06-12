@@ -35,6 +35,7 @@
                             <tr>
                                 <th>商品名</th>
                                 <th>説明</th>
+                                <th>商品カテゴリ</th>
                                 <th>価格</th>
                                 <th>購入日</th>
                                 <th></th>
@@ -44,6 +45,7 @@
                             <tr th:each="goods : ${ownedGoodsList}">
                                 <td th:text="${goods.goodsName}"></td>
                                 <td th:text="${goods.goodsDescription}"></td>
+                                <td th:text="${goods.goodsCategory.goodsCategoryName}"></td>
                                 <td th:text="${goods.price}"></td>
                                 <td th:text="${goods.purchaseDate}"></td>
                                 <td>
