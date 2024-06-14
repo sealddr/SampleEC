@@ -21,7 +21,7 @@
 		<result column="occupation_name" property="occupationName"/>
 	</resultMap>
 
-	<select id="findAllOccupations" resulMap="MOccupation">
+	<select id="findAllOccupations" resulType="MOccupation">
 		select * from m_occupation
 	</select>
 
