@@ -2,9 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.repository.UserMapper">
-	<select id="findAllOccupations" resultType="Occupation">
+
+	<resultMap id="user" type="com.example.domain.user.model.MUser">
+		<id column="user_id" property="userId" />
+		<result column="mail_address" property="mailAddress" />
+		<result column="password" property="password" />
+		<result column="user_name" property="userName" />
+		<result column="furigana" property="furigana" />
+		<result column="phone_number" property="phoneNumber" />
+		<result column="birthday" property="birthday" />
+		<result column="occupation_id" property="occupationId" />
+		<result column="role" property="role" />
+		<association property="occupation" resultMap="occupation"></association>
+	</resultMap>
+
+	<resultMap id="occupation" type="com.example.domain.user.model.Occupation">
+		<id column="occupation_id" property="occupationId" />
+		<result column="occupation_name" property="occupationName"/>
+	</resultMap>
+
+	<select id="findAllOccupations" resulMap="occupation">
 		select * from m_occupation
 	</select>
+
 	<insert id="insertOne">
 		insert into m_user(
 			user_id,
@@ -31,12 +51,14 @@
 	</insert>
 
 	<!-- ログインユーザー情報取得-->
-	<select id="findLoginUser" resultType="MUser">
+	<select id="findOne" resultMap="user">
 		select
-		  *
+			*
 		from
-		  m_user
+			m_user
+			left join m_occupation
+				on m_user.occupation_id = m_occupation.occupation_id
 		where
-		  mail_address = #{mailAddress}
+			user_id = #{userId}
 	</select>
 </mapper>
