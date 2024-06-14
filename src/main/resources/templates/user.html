@@ -47,7 +47,7 @@
                                 <td th:text="${goods.goodsDescription}"></td>
                                 <td th:text="${goods.goodsCategory.goodsCategoryName}"></td>
                                 <td th:text="${goods.price}"></td>
-                                <td th:text="${goods.purchaseDate}"></td>
+                                <td th:text="${#dates.format(goods.purchaseDate, 'yyyy/MM/dd')}"></td>
                                 <td>
                                     <a th:href="@{'/goods/' + ${goods.serviceURL}}" class="btn btn-primary">閲覧</a>
                                 </td>                                
