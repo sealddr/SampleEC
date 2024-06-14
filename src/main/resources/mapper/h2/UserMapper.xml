@@ -16,12 +16,12 @@
 		<association property="occupation" resultMap="occupation"></association>
 	</resultMap>
 
-	<resultMap id="occupation" type="com.example.domain.user.model.Occupation">
+	<resultMap id="occupation" type="com.example.domain.user.model.MOccupation">
 		<id column="occupation_id" property="occupationId" />
 		<result column="occupation_name" property="occupationName"/>
 	</resultMap>
 
-	<select id="findAllOccupations" resulType="MOccupation">
+	<select id="findAllOccupations" resultType="MOccupation">
 		select * from m_occupation
 	</select>
 
@@ -51,7 +51,7 @@
 	</insert>
 
 	<!-- ログインユーザー情報取得-->
-	<select id="findOne" resultMap="user">
+	<select id="findLoginUser" resultMap="user">
 		select
 			*
 		from
@@ -59,6 +59,6 @@
 			left join m_occupation
 				on m_user.occupation_id = m_occupation.occupation_id
 		where
-			user_id = #{userId}
+			mail_address = #{mailAddress}
 	</select>
 </mapper>
