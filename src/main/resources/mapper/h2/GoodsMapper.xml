@@ -74,4 +74,15 @@
 		where
 			goods_id = #{goodsId}
 	</delete>
+
+	<select id="countPurchaseHistory" resultType="int">
+		select
+			count(*)
+		from
+			t_purchase_history
+		where
+			goods_id = #{goodsId} 
+		and
+			user_id = #{userId}
+	</select>
 </mapper>

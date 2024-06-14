@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.domain.cart.model.MCart;
 import com.example.domain.goods.model.MGoods;
-import com.example.domain.goods.service.CartService;
+import com.example.domain.cart.service.CartService;
 import com.example.domain.goods.service.GoodsService;
 import com.example.form.AddToCartForm;
 import com.example.form.RemoveFromCartForm;
@@ -35,7 +35,7 @@ public class RestCartOperationController {
 		log.debug(form.toString());
 		MCart cart = (MCart) session.getAttribute("cart");
 		int goodsId = form.getGoodsId();
-		if(cartService.hasAlreadyAdded(cart, goodsId)) return 1;
+		if(cartService.isInCart(cart, goodsId)) return 1;
 				
 		MGoods goods = goodsService.getGoodsOne(goodsId);
 		cartService.add(goods, cart);

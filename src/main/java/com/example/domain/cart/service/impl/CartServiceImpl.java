@@ -1,4 +1,4 @@
-package com.example.domain.goods.service.impl;
+package com.example.domain.cart.service.impl;
 
 import java.util.List;
 
@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.cart.model.MCart;
 import com.example.domain.goods.model.MGoods;
-import com.example.domain.goods.service.CartService;
+import com.example.domain.cart.service.CartService;
 
 @Service
 public class CartServiceImpl implements CartService {
 
 	@Override
-	public boolean hasAlreadyAdded(MCart cart, int goodsId) {
+	public boolean isInCart(MCart cart, int goodsId) {
 		List<MGoods> cartItems = cart.getCartItems();
 		for (MGoods goods : cartItems) {
 			if(goodsId == goods.getGoodsId()) return true;

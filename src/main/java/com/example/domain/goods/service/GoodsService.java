@@ -19,4 +19,6 @@ public interface GoodsService {
 	public void updateGoods(MGoods goods);
 
 	public void deleteGoods(int goodsId);
+
+    public boolean isInPurchaseHistory(int userId, int goodsId);
 }

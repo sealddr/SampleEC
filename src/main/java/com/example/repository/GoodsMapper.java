@@ -22,4 +22,6 @@ public interface GoodsMapper {
 	public void updateOne(MGoods goods);
 
 	public void deleteOne(int goodsId);
+
+    public int countPurchaseHistory(int userId, int goodsId);
 }

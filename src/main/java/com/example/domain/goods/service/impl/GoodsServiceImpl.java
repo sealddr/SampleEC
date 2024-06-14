@@ -46,4 +46,9 @@ public class GoodsServiceImpl implements GoodsService{
 	public void deleteGoods(int goodsId) {
 		mapper.deleteOne(goodsId);
 	}
+
+	@Override
+	public boolean isInPurchaseHistory(int userId, int goodsId) {
+		return (mapper.countPurchaseHistory(userId, goodsId) > 0);
+	}
 }
