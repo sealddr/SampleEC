@@ -5,12 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.domain.user.model.MUser;
-import com.example.domain.user.model.Occupation;
+import com.example.domain.user.model.MOccupation;
 
 @Mapper
 public interface UserMapper {
 	
-	public List<Occupation> findAllOccupations();
+	public List<MOccupation> findAllOccupations();
 	
 	public int insertOne(MUser user);
 

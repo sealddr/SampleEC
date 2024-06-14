@@ -6,7 +6,7 @@ import lombok.Data;
  * 職業 
  */
 @Data
-public class Occupation {
+public class MOccupation {
 	int occupationId;
 	String occupationName;
 	

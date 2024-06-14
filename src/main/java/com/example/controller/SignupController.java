@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.domain.user.model.MUser;
-import com.example.domain.user.model.Occupation;
+import com.example.domain.user.model.MOccupation;
 import com.example.domain.user.service.UserService;
 import com.example.form.SignupForm;
 import com.example.form.GroupOrder;
@@ -35,7 +35,7 @@ public class SignupController {
 	@GetMapping("/signup")
 	public String getSignup(Model model, @ModelAttribute SignupForm form) {
 		
-		List<Occupation> occupationList = userService.getOccupations();
+		List<MOccupation> occupationList = userService.getOccupations();
 		model.addAttribute("occupationList", occupationList);
 		return "signup";
 	}

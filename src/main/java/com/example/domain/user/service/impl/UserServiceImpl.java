@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.user.model.MUser;
-import com.example.domain.user.model.Occupation;
+import com.example.domain.user.model.MOccupation;
 import com.example.domain.user.service.UserService;
 import com.example.repository.UserMapper;
 
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	private PasswordEncoder encoder;
 
 	@Override
-	public List<Occupation> getOccupations() {
+	public List<MOccupation> getOccupations() {
 		return mapper.findAllOccupations();
 	}
 
