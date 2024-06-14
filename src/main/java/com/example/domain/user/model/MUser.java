@@ -15,5 +15,6 @@ public class MUser {
 	private Date birthday;
 	private int occupationId;
 	private String role;
+	private Occupation occupation;
 	
 }
