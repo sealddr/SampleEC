@@ -102,7 +102,7 @@ public class StoreController {
 			}
 
 		}catch(NullPointerException e){
-			throw e;
+			// NOP
 
 		}
 

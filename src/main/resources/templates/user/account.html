@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<head>
+    <title>ユーザーアカウント</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <div class="container">
+            <h1>ユーザーアカウント</h1>
+            <table>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td th:text="${user.mailAddress}"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-edit-mailaddress">変更</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>パスワード</th>
+                    <td text="パスワードは表示されません"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-edit-password">確認/変更</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>お名前</th>
+                    <td th:text="${user.userName}"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-edit-username">変更</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>フリガナ</th>
+                    <td th:text="${user.furigana}"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-edit-furigana">変更</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td th:text="${user.phoneNumber}"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-edit-phonenumber">変更</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>生年月日</th>
+                    <td th:text="${user.birthday}"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-edit-birthday">変更</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>ご職業</th>
+                    <td th:text="${user.job}"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-edit-job">変更</button>
+                    </td>
+                </tr>
+            </table>        
+        </div>
+    </div>
+</body>
+</html>
