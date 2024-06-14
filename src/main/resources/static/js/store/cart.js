@@ -32,6 +32,9 @@ function addToCart(form){
         }).done(function(result){
             if(0===result){
                 alert('カートに追加しました');
+                // /storeへリダイレクト
+                window.location.href = '/store';
+
             }else if(1===result){
                 alert('この商品はすでにカートに追加されています');
             }
@@ -41,7 +44,7 @@ function addToCart(form){
         alert('カートへの追加に失敗しました');
 
     }).always(function(){
-
+ 
     });
 }
 
@@ -62,7 +65,7 @@ function removeFromCart(form){
 
         }).done(function(result){
            alert('カートから削除しました');
-           window.location.href = '/store/cart/view';
+           window.location.href = '/store/cart';
 
     }).fail(function(jqXHR, textStatus, errorThrown){
         alert('カートからの削除に失敗しました');

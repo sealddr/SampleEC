@@ -16,7 +16,9 @@ import com.example.domain.goods.model.MGoods;
 import com.example.domain.goods.model.MGoodsCategory;
 import com.example.domain.goods.model.MGoodsSearchKeys;
 import com.example.domain.goods.service.GoodsService;
+import com.example.domain.user.model.MUser;
 import com.example.form.SearchGoodsForm;
+
 import com.example.domain.cart.model.MCart;
 import com.example.domain.cart.service.CartService;
 
@@ -44,10 +46,10 @@ public class StoreController {
 		List<MGoodsCategory> goodsCategoryList = goodsService.getGoodsCategories();		
 		model.addAttribute("goodsCategoryList", goodsCategoryList);
 		
-		MGoodsSearchKeys searchKeys = modelMapper.map(form, MGoodsSearchKeys.class);
-		
+		MGoodsSearchKeys searchKeys = modelMapper.map(form, MGoodsSearchKeys.class);		
 		List<MDisplayedGoods> displayedGoodsList = this.searchDisplayedGoods(searchKeys);
 		model.addAttribute("displayedGoodsList", displayedGoodsList);		
+
 		return "store";
 		
 	}
@@ -78,7 +80,8 @@ public class StoreController {
 		}
 		try{
 			// ユーザーがログイン状態の場合、カートに商品が存在するか、購入履歴に商品が存在するかを確認
-			int userId = (int) session.getAttribute("userId");
+			MUser user = (MUser) session.getAttribute("loginUser");
+			int userId = user.getUserId();
 			MCart cart = (MCart) session.getAttribute("cart");
 
 			for (MDisplayedGoods displayedGoods : displayedGoodsList) {
@@ -99,7 +102,7 @@ public class StoreController {
 			}
 
 		}catch(NullPointerException e){
-			// NOP
+			throw e;
 
 		}
 
