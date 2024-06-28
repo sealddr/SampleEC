@@ -9,6 +9,18 @@
 
 <body>
     <div layout:fragment="content">
+        <div class="update-mailAddress-area">
+            <form class="update-mailAddress-from" method="post" th:action="@{/user/update/mailAddress}"
+            th:object="updateMailAddressForm">
+                <h1>メールアドレス変更</h1>
+                <div class="form-group">
+                    <label for="mailAddress">新しいメールアドレス</label>
+                    <input type="email" class="form-control" id="mailAddress" th:field="*{mailAddress}" required>
+                </div>
+            </form>
+
+        </div>
+
         <div class="container">
             <h1>ユーザーアカウント</h1>
             <table>
